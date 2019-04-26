@@ -9,15 +9,22 @@
 import XCTest
 @testable import DforDesign
 class WebserviceTests: XCTestCase {
-
+    var mainViewController: MainViewController!
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        
     }
-
+    
+    func testCarouselCount() {
+        XCTAssertEqual(mainViewController.presenter.carouselCount(), 3)
+    }
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testWebserviceCall() {
         let url = "https://www.google.ca/"
         let expectation = XCTestExpectation(description: "running webservice")

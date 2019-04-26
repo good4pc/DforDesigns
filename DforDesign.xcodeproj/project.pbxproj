@@ -21,7 +21,6 @@
 		8DC3EF742270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF732270E71B00AB7555 /* SmartBoyFeedCell.swift */; };
 		8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF732270E71B00AB7555 /* SmartBoyFeedCell.swift */; };
 		8DC3EF772270E78900AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF762270E78900AB7555 /* MainViewController.swift */; };
-		8DC3EF782270E78900AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF762270E78900AB7555 /* MainViewController.swift */; };
 		8DC3EF7B2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7A2270F2D800AB7555 /* CarouselCollectionViewCell.swift */; };
 		8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7A2270F2D800AB7555 /* CarouselCollectionViewCell.swift */; };
 		8DC3EF7E227105CA00AB7555 /* CarouselInnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7D227105CA00AB7555 /* CarouselInnerCell.swift */; };
@@ -38,6 +37,7 @@
 		8DC3EF95227272D100AB7555 /* MainData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF93227272D100AB7555 /* MainData.json */; };
 		8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
 		8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
+		8DC3EF9A2273A19D00AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF762270E78900AB7555 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,9 +409,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC3EF8A2272571E00AB7555 /* WebserviceTests.swift in Sources */,
-				8DC3EF782270E78900AB7555 /* MainViewController.swift in Sources */,
 				8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */,
 				8DC3EF8E227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */,
+				8DC3EF9A2273A19D00AB7555 /* MainViewController.swift in Sources */,
 				8DC3EF4F2270E41200AB7555 /* DforDesignTests.swift in Sources */,
 				8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
 				8DC3EF6E2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,

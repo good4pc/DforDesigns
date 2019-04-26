@@ -13,7 +13,7 @@
         <!--Main View Controller-->
         <scene sceneID="94N-V4-cMD">
             <objects>
-                <viewController id="mhY-FM-Hwv" customClass="MainViewController" customModule="DforDesign" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="mhY-FM-Hwv" customClass="MainViewController" customModule="DforDesign" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eoR-TY-gKE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

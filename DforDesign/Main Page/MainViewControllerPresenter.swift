@@ -22,7 +22,9 @@ class MainViewControllerPresenter: NSObject {
     weak var delegate: PresenterDelegate?
     let carouselMaximum = 9999
     let carouselTiming = 3.5
-    //Carousel data structures
+    
+    //MARK: - Carousel data structures
+    
     func carouselCount() -> Int {
         if let mainComponents = mainComponents {
             return mainComponents.carouselItems.count
@@ -33,6 +35,7 @@ class MainViewControllerPresenter: NSObject {
     
     func getMainData() {
         //TODO : url should be changed to the approriate value
+        
         let urlString = "https://www.google.ca/"
         do {
             try WebServiceCaller.fetchData(from: urlString) { (data, error) in

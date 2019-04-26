@@ -28,7 +28,7 @@ class DataTranslator: NSObject {
     #else
     let decoder = JSONDecoder()
     do {
-        return try  decoder.decode([MainComponenets].self, from: data)
+        return try  decoder.decode(MainComponenets.self, from: data)
     } catch _ {
         throw WebserviceError.decodingIssue
     }

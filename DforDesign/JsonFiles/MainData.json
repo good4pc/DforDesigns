@@ -1,0 +1,14 @@
+{
+    "carouselItems": [
+        {"imageUrl":"image1",
+            "itemUrl":"item1"
+        },
+        {"imageUrl":"image2",
+            "itemUrl":"item2"
+        },
+        {"imageUrl":"image3",
+            "itemUrl":"item3"
+        }
+    ],
+    "string": "Hello World"
+}

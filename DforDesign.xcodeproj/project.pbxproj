@@ -26,6 +26,18 @@
 		8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7A2270F2D800AB7555 /* CarouselCollectionViewCell.swift */; };
 		8DC3EF7E227105CA00AB7555 /* CarouselInnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7D227105CA00AB7555 /* CarouselInnerCell.swift */; };
 		8DC3EF7F227105CA00AB7555 /* CarouselInnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7D227105CA00AB7555 /* CarouselInnerCell.swift */; };
+		8DC3EF832272515700AB7555 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF822272515700AB7555 /* SearchViewController.swift */; };
+		8DC3EF86227252C700AB7555 /* WebseriveCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF85227252C700AB7555 /* WebseriveCaller.swift */; };
+		8DC3EF87227252C700AB7555 /* WebseriveCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF85227252C700AB7555 /* WebseriveCaller.swift */; };
+		8DC3EF8A2272571E00AB7555 /* WebserviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF892272571E00AB7555 /* WebserviceTests.swift */; };
+		8DC3EF8D227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF8C227259F700AB7555 /* MainViewControllerPresenter.swift */; };
+		8DC3EF8E227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF8C227259F700AB7555 /* MainViewControllerPresenter.swift */; };
+		8DC3EF902272610700AB7555 /* DataTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF8F2272610700AB7555 /* DataTranslator.swift */; };
+		8DC3EF912272610700AB7555 /* DataTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF8F2272610700AB7555 /* DataTranslator.swift */; };
+		8DC3EF94227272D100AB7555 /* MainData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF93227272D100AB7555 /* MainData.json */; };
+		8DC3EF95227272D100AB7555 /* MainData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF93227272D100AB7555 /* MainData.json */; };
+		8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
+		8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,9 +74,16 @@
 		8DC3EF6C2270E5BF00AB7555 /* DForDesignFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DForDesignFeedCell.swift; sourceTree = "<group>"; };
 		8DC3EF702270E6AE00AB7555 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8DC3EF732270E71B00AB7555 /* SmartBoyFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartBoyFeedCell.swift; sourceTree = "<group>"; };
-		8DC3EF762270E78900AB7555 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8DC3EF762270E78900AB7555 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../MainViewController.swift; sourceTree = "<group>"; };
 		8DC3EF7A2270F2D800AB7555 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		8DC3EF7D227105CA00AB7555 /* CarouselInnerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselInnerCell.swift; sourceTree = "<group>"; };
+		8DC3EF822272515700AB7555 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8DC3EF85227252C700AB7555 /* WebseriveCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebseriveCaller.swift; sourceTree = "<group>"; };
+		8DC3EF892272571E00AB7555 /* WebserviceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebserviceTests.swift; sourceTree = "<group>"; };
+		8DC3EF8C227259F700AB7555 /* MainViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerPresenter.swift; sourceTree = "<group>"; };
+		8DC3EF8F2272610700AB7555 /* DataTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTranslator.swift; sourceTree = "<group>"; };
+		8DC3EF93227272D100AB7555 /* MainData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MainData.json; sourceTree = "<group>"; };
+		8DC3EF9722728CC500AB7555 /* MainComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +114,6 @@
 		8DC3EF2A2270E41000AB7555 = {
 			isa = PBXGroup;
 			children = (
-				8DC3EF762270E78900AB7555 /* MainViewController.swift */,
 				8DC3EF352270E41000AB7555 /* DforDesign */,
 				8DC3EF4D2270E41200AB7555 /* DforDesignTests */,
 				8DC3EF582270E41200AB7555 /* DforDesignUITests */,
@@ -116,6 +134,11 @@
 		8DC3EF352270E41000AB7555 /* DforDesign */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EF9622728CB300AB7555 /* Model */,
+				8DC3EF92227272A900AB7555 /* JsonFiles */,
+				8DC3EF8B227259D700AB7555 /* Helper */,
+				8DC3EF842272527B00AB7555 /* Webservice */,
+				8DC3EF812272513200AB7555 /* Search */,
 				8DC3EF6F2270E69F00AB7555 /* Extensions */,
 				8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */,
 				8DC3EF672270E4DE00AB7555 /* Main Page */,
@@ -132,6 +155,7 @@
 		8DC3EF4D2270E41200AB7555 /* DforDesignTests */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EF88227256FB00AB7555 /* Webservice */,
 				8DC3EF4E2270E41200AB7555 /* DforDesignTests.swift */,
 				8DC3EF502270E41200AB7555 /* Info.plist */,
 			);
@@ -150,6 +174,8 @@
 		8DC3EF672270E4DE00AB7555 /* Main Page */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EF762270E78900AB7555 /* MainViewController.swift */,
+				8DC3EF8C227259F700AB7555 /* MainViewControllerPresenter.swift */,
 			);
 			path = "Main Page";
 			sourceTree = "<group>";
@@ -179,6 +205,54 @@
 				8DC3EF7D227105CA00AB7555 /* CarouselInnerCell.swift */,
 			);
 			path = Carousel;
+			sourceTree = "<group>";
+		};
+		8DC3EF812272513200AB7555 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EF822272515700AB7555 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8DC3EF842272527B00AB7555 /* Webservice */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EF85227252C700AB7555 /* WebseriveCaller.swift */,
+			);
+			path = Webservice;
+			sourceTree = "<group>";
+		};
+		8DC3EF88227256FB00AB7555 /* Webservice */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EF892272571E00AB7555 /* WebserviceTests.swift */,
+			);
+			path = Webservice;
+			sourceTree = "<group>";
+		};
+		8DC3EF8B227259D700AB7555 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EF8F2272610700AB7555 /* DataTranslator.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		8DC3EF92227272A900AB7555 /* JsonFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EF93227272D100AB7555 /* MainData.json */,
+			);
+			path = JsonFiles;
+			sourceTree = "<group>";
+		};
+		8DC3EF9622728CB300AB7555 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EF9722728CC500AB7555 /* MainComponents.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC3EF94227272D100AB7555 /* MainData.json in Resources */,
 				8DC3EF442270E41200AB7555 /* LaunchScreen.storyboard in Resources */,
 				8DC3EF412270E41200AB7555 /* Assets.xcassets in Resources */,
 				8DC3EF3C2270E41000AB7555 /* Main.storyboard in Resources */,
@@ -295,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC3EF95227272D100AB7555 /* MainData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,12 +390,17 @@
 			files = (
 				8DC3EF7B2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */,
 				8DC3EF742270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
+				8DC3EF8D227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */,
+				8DC3EF902272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EF372270E41000AB7555 /* AppDelegate.swift in Sources */,
+				8DC3EF832272515700AB7555 /* SearchViewController.swift in Sources */,
 				8DC3EF3F2270E41000AB7555 /* DforDesign.xcdatamodeld in Sources */,
 				8DC3EF7E227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
 				8DC3EF6D2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
+				8DC3EF86227252C700AB7555 /* WebseriveCaller.swift in Sources */,
 				8DC3EF772270E78900AB7555 /* MainViewController.swift in Sources */,
 				8DC3EF712270E6AE00AB7555 /* Helpers.swift in Sources */,
+				8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,13 +408,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC3EF8A2272571E00AB7555 /* WebserviceTests.swift in Sources */,
 				8DC3EF782270E78900AB7555 /* MainViewController.swift in Sources */,
+				8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */,
+				8DC3EF8E227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */,
 				8DC3EF4F2270E41200AB7555 /* DforDesignTests.swift in Sources */,
 				8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
 				8DC3EF6E2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
+				8DC3EF912272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */,
 				8DC3EF722270E6AE00AB7555 /* Helpers.swift in Sources */,
 				8DC3EF7F227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
+				8DC3EF87227252C700AB7555 /* WebseriveCaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +592,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-D Development";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dfordesign.pc.DforDesign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

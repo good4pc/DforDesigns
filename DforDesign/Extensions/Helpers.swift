@@ -24,3 +24,17 @@ extension UIView {
         self.layer.addSublayer(layer)
     }
 }
+
+extension String {
+    func takeDataFromUrl() -> Data? {
+        do {
+            let url = URL(fileURLWithPath: self)
+            let data = try Data(contentsOf: url, options: .dataReadingMapped)
+            return data
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+        
+    }
+}

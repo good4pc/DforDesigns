@@ -17,7 +17,7 @@ fileprivate enum SectionHeight: CGFloat {
     case carousel = 220
 }
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, PresenterDelegate {
 
     fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
     fileprivate let carouselIdentifier = "carouselCellIDentifier"
@@ -33,15 +33,45 @@ class MainViewController: UIViewController {
         return collectionView
     }()
     
+    var presenter: MainViewControllerPresenter!
+    
     override func viewDidLoad() {
         self.title = "DForDesign"
+        initializeCollectionView()
+        initializeSearchButtonOnNavigationBar()
+        callInitialData()
+    }
+    
+    private func callInitialData() {
+        presenter = MainViewControllerPresenter()
+        presenter.delegate = self
+        presenter.getMainData()
+    }
+    
+    fileprivate func initializeSearchButtonOnNavigationBar() {
+        let searChBarButton = UIBarButtonItem(title: "Search", style: .done, target: self, action: #selector(searchButtonClicked))
+        self.navigationItem.rightBarButtonItem = searChBarButton
+    }
+    
+    @objc func searchButtonClicked() {
+        
+        self.performSegue(withIdentifier: "SearchViewController", sender: self)
+    }
+    
+    fileprivate func initializeCollectionView() {
         self.view.addSubview(collectionView)
         collectionView.frame = self.view.frame
-        
         collectionView.register(DForDesignFeedCell.self, forCellWithReuseIdentifier: cellIdentifierForFeed)
         collectionView.register(CarouselCell.self, forCellWithReuseIdentifier: carouselIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    func updateUI() {
+        DispatchQueue.main.async {
+           self.collectionView.reloadData()
+        }
+        
     }
 
 }
@@ -61,6 +91,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch indexPath.section {
         case Section.carousel.rawValue:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselIdentifier, for: indexPath) as! CarouselCell
+            cell.presenter = presenter
             return cell
             
         case Section.feed.rawValue:

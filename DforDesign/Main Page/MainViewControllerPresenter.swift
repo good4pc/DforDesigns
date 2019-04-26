@@ -18,14 +18,34 @@ protocol PresenterDelegate: NSObject {
 }
 
 class MainViewControllerPresenter: NSObject {
-    var mainComponents: MainComponenets!
+    var mainComponents: MainComponenets?
     weak var delegate: PresenterDelegate?
+    let carouselMaximum = 9999
+    let carouselTiming = 3.5
+    //Carousel data structures
+    func carouselCount() -> Int {
+        if let mainComponents = mainComponents {
+            return mainComponents.carouselItems.count
+        } else {
+            return 0
+        }
+    }
+    
     func getMainData() {
+        //TODO : url should be changed to the approriate value
         let urlString = "https://www.google.ca/"
         do {
             try WebServiceCaller.fetchData(from: urlString) { (data, error) in
                 if let data = data {
-                    self.mainComponents = DataTranslator.decodeMainData(with: data)
+                    do {
+                         self.mainComponents = try DataTranslator.decodeMainData(with: data)
+                    } catch let error as WebserviceError {
+                        print(error.description)
+                    }
+                    catch let error {
+                        print(error.localizedDescription)
+                    }
+                   
                     //print(self.mainComponents)
                 } else {
                     self.mainComponents = nil

@@ -9,38 +9,29 @@
 import Foundation
 
 class DataTranslator: NSObject {
-   static func decodeMainData(with data: Data) -> MainComponenets? {
-   
+   static func decodeMainData(with data: Data) throws -> MainComponenets?  {
+    //TODO:Refactor
     #if DEBUG
-    print("Debug")
     let jsonPAth = Bundle.main.path(forResource: "MainData", ofType: "json")
     guard let url = jsonPAth else {
-        return nil
+        throw WebserviceError.localJsonUrlIssue
     }
     guard let data = url.takeDataFromUrl() else {
-        return nil
+        throw WebserviceError.unableToRetrieveDataFromPath
     }
     let decoder = JSONDecoder()
     do {
-        print(data)
         return try  decoder.decode(MainComponenets.self, from: data)
-    } catch let error {
-        print(error.localizedDescription)
-        return nil
+    } catch _ {
+        throw WebserviceError.decodingIssue
     }
     #else
-    print("release")
-    
     let decoder = JSONDecoder()
     do {
         return try  decoder.decode([MainComponenets].self, from: data)
     } catch _ {
-        return nil
+        throw WebserviceError.decodingIssue
     }
     #endif
     }
-}
-
-struct MainData: Decodable {
-    
 }

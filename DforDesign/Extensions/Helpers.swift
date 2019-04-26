@@ -23,6 +23,7 @@ extension UIView {
         layer.backgroundColor = UIColor.lightGray.cgColor
         self.layer.addSublayer(layer)
     }
+  
 }
 
 extension String {
@@ -36,5 +37,34 @@ extension String {
             return nil
         }
         
+    }
+}
+
+
+extension UIImageView {
+    //MARK: Download image from url and set
+    
+    func downloadImage(from url: String , completionHandler: @escaping (Data?) -> Void) {
+        
+        let queue = DispatchQueue.global(qos: .background)
+        queue.async {
+            guard let url = URL(string: url) else {
+                self.image = UIImage(named: "noImage")
+                completionHandler(nil)
+                return
+            }
+            URLSession.shared.dataTask(with: url) { (data, urlResponse, error) in
+                if let data = data {
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async(execute: {
+                        self.image = image
+                    })
+                    completionHandler(data)
+                } else {
+                    self.image = UIImage(named: "noImage")
+                    completionHandler(nil)
+                }
+                }.resume()
+        }
     }
 }

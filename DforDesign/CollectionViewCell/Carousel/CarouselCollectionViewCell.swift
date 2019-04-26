@@ -11,13 +11,17 @@ import UIKit
 fileprivate let carouselCellIDentifier = "CarouselCellIdentifier"
 class CarouselCell: UICollectionViewCell {
     
-    fileprivate let carouselMaximum = 9999
+    
     var currentPage = 0
+    var currentPagePostion = 0
     var presenter: MainViewControllerPresenter! {
         didSet {
             collectionViewCarousel.reloadData()
+            pageControl.numberOfPages = presenter.carouselCount()
+            
         }
     }
+    
     let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = UIColor.lightGray
@@ -53,8 +57,7 @@ class CarouselCell: UICollectionViewCell {
         collectionViewCarousel.delegate = self
         collectionViewCarousel.dataSource = self
         self.addSubview(pageControl)
-        //TODO: Add number of pages here
-        pageControl.numberOfPages = 4
+        
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": pageControl]))
         
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[V0(25)]-10-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": pageControl]))
@@ -63,24 +66,33 @@ class CarouselCell: UICollectionViewCell {
     //MARK: - Carousel Animation
     
     private func startChangingCarousel() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
             self.movePage()
-            self.pageControl.currentPage = self.currentPage
             self.startChangingCarousel()
         }
     }
     
     private func movePage() {
-        if currentPage == carouselMaximum - 1 {
+        if currentPage == presenter.carouselMaximum - 1 {
             currentPage = 0
+            currentPagePostion = 0
             let scrollTo = CGPoint(x: 0, y: 0)
             collectionViewCarousel.setContentOffset(scrollTo, animated: false)
             
         } else {
+            if self.currentPage == presenter.carouselCount() - 1 {
+                self.pageControl.currentPage = 0
+                currentPagePostion = 0
+            } else
+            {
+                currentPagePostion += 1
+                self.pageControl.currentPage = currentPagePostion
+            }
             self.currentPage = self.currentPage + 1
             let width = Int(self.frame.width) * (self.currentPage)
             let scrollTo = CGPoint(x: width, y: 0)
             collectionViewCarousel.setContentOffset(scrollTo, animated: true)
+            
         }
     }
     
@@ -93,22 +105,15 @@ class CarouselCell: UICollectionViewCell {
 
 extension CarouselCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return presenter.carouselCount() == 0 ? 0: presenter.carouselMaximum
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselCellIDentifier, for: indexPath) as! CarouselInnerCell
-        //TODO: Change 4 by the number of carousel items from the model
-        print(presenter)
-        if let mainComponents = presenter.mainComponents  {
-            let position = indexPath.row % mainComponents.carouselItems.count
-            cell.position = "\(position)"
-        } else {
-               cell.position = "not set"
-        }
-       
+        let position = indexPath.row % presenter.carouselCount()
+        cell.itemDetails = presenter.mainComponents?.carouselItems[position]
         return cell
     }
     
@@ -120,8 +125,9 @@ extension CarouselCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageWidth = collectionViewCarousel.frame.size.width
         let page = Int(collectionViewCarousel.contentOffset.x / pageWidth)
-        pageControl.currentPage = page
+        pageControl.currentPage = page % presenter.carouselCount()
         currentPage = page
+        currentPagePostion = page % presenter.carouselCount()
     }
 }
 

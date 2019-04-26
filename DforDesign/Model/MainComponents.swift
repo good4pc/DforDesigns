@@ -17,4 +17,13 @@ struct MainComponenets: Decodable {
 struct Item: Decodable {
     var imageUrl: String
     var itemUrl: String
+    //calculated variable for storing the downloaded image
+    var imageDownloaded: Data?
+    
+    mutating func updateImage(with data: Data?) {
+        guard let data = data else {
+            return
+        }
+        imageDownloaded = data
+    }
 }

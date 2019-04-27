@@ -11,6 +11,7 @@ import UIKit
 protocol MainViewControllerPresentable {
     func callWebservice()
     var mainComponents: MainComponenets {get set}
+     func getChallengeTitle() -> String
 }
 
 protocol PresenterDelegate: NSObject {
@@ -32,6 +33,10 @@ class MainViewControllerPresenter: NSObject {
             return 0
         }
     }
+    
+    //MARK: challenge
+   
+    
     
     func getMainData() {
         //TODO : url should be changed to the approriate value

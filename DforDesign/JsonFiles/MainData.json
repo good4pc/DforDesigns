@@ -10,5 +10,10 @@
             "itemUrl":"item3"
         }
     ],
+    "challenge": {
+        "heading": "PARTICIPATE",
+        "description" : "Unleash your creativity! Submit a design to our",
+        "imageUrl": "https://s3.amazonaws.com/tinycards/image/5d06c36cc3a9d6821e1a5eeb7c0fe423"
+    },
     "string": "Hello World"
 }

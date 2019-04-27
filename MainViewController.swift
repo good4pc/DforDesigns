@@ -9,18 +9,20 @@
 import UIKit
 fileprivate enum Section: Int{
     case carousel = 0
-    case feed = 1
+    case challengeSection = 1
     case chats = 2
 }
 
 fileprivate enum SectionHeight: CGFloat {
     case carousel = 220
+    case challenge = 400
 }
 
 class MainViewController: UIViewController, PresenterDelegate {
 
     fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
     fileprivate let carouselIdentifier = "carouselCellIDentifier"
+    fileprivate let challengeIdentifier = "challengeIdentifier"
     
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -54,7 +56,6 @@ class MainViewController: UIViewController, PresenterDelegate {
     }
     
     @objc func searchButtonClicked() {
-        
         self.performSegue(withIdentifier: "SearchViewController", sender: self)
     }
     
@@ -63,6 +64,7 @@ class MainViewController: UIViewController, PresenterDelegate {
         collectionView.frame = self.view.frame
         collectionView.register(DForDesignFeedCell.self, forCellWithReuseIdentifier: cellIdentifierForFeed)
         collectionView.register(CarouselCell.self, forCellWithReuseIdentifier: carouselIdentifier)
+        collectionView.register(ChallengeCell.self, forCellWithReuseIdentifier: challengeIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -94,9 +96,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.presenter = presenter
             return cell
             
-        case Section.feed.rawValue:
+        case Section.challengeSection.rawValue:
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath) as! DForDesignFeedCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
+            if let mainComponent = presenter.mainComponents {
+                cell.challenge = mainComponent.challenge
+            }
             return cell
             
         case Section.chats.rawValue:
@@ -112,9 +117,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.item == 0 {
-             return CGSize(width: self.view.frame.width, height: SectionHeight.carousel.rawValue)
+        if indexPath.section == Section.carousel.rawValue {
+             return CGSize(width: self.view.frame.size.width, height: SectionHeight.carousel.rawValue)
         }
+        else if indexPath.section == Section.challengeSection.rawValue {
+             return CGSize(width: self.view.frame.size.width, height: SectionHeight.challenge.rawValue)
+        }
+        
+      
         return CGSize(width: self.view.frame.width, height: self.view.frame.height)
     }
 }

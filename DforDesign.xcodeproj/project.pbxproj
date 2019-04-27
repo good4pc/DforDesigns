@@ -38,6 +38,7 @@
 		8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
 		8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
 		8DC3EF9A2273A19D00AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF762270E78900AB7555 /* MainViewController.swift */; };
+		8DC3EF9B2273E49600AB7555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF3A2270E41000AB7555 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -371,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC3EF95227272D100AB7555 /* MainData.json in Resources */,
+				8DC3EF9B2273E49600AB7555 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +631,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-objc";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dfordesign.pc.DforDesignTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

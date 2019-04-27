@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum JsonFileName: String {
+    case mainData = "MainData"
+}
+
 class DataTranslator: NSObject {
    static func decodeMainData(with data: Data) throws -> MainComponenets?  {
     //TODO:Refactor

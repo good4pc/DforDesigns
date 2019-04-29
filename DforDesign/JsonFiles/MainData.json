@@ -1,0 +1,14 @@
+{
+    "carouselItems": [
+        {"imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiuSZNSTgykfjYwWHRasiZ-i77rzgqOUNm8rxu-_O4Q4MaLTbC",
+            "itemUrl":"item1"
+        },
+        {"imageUrl":"https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?cs=srgb&dl=beautiful-beautiful-flowers-bright-1133957.jpg&fm=jpg",
+            "itemUrl":"item2"
+        },
+        {"imageUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jasminum_officinale.JPG/1200px-Jasminum_officinale.JPG",
+            "itemUrl":"item3"
+        }
+    ],
+    "string": "Hello World"
+}

@@ -48,6 +48,15 @@ class ChallengeCell: UICollectionViewCell {
         return button
     }()
     
+    let baseView: UIView = {
+        let view = UIView()
+        view.tag = 334
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var heightOfCell: CGFloat = 0.0
+    
     var challenge: Challenge! {
         didSet {
             DispatchQueue.main.async {
@@ -55,9 +64,21 @@ class ChallengeCell: UICollectionViewCell {
                 self.descriptionLabel.text = self.challenge.description
                 self.downloadImage()
             }
-            
         }
     }
+    
+    
+    //    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+    //        setNeedsLayout()
+    //        layoutIfNeeded()
+    //
+    //        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+    //        var frame = layoutAttributes.frame
+    //        frame.size.height = ceil(size.height)
+    //        layoutAttributes.frame = frame
+    //        print(ceil(size.height))
+    //        return layoutAttributes
+    //    }
     
     fileprivate func downloadImage() {
         if let imageDownloaded =  challenge.imageDownloaded {
@@ -71,25 +92,34 @@ class ChallengeCell: UICollectionViewCell {
         }
     }
     
+    fileprivate func addViewElements() {
+        //self.addProgressIndicator()
+        self.addSubview(baseView)
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":baseView]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":baseView]))
+        baseView.addSubview(participateLabel)
+        
+        baseView.addSubview(descriptionLabel)
+        baseView.addSubview(imageView)
+        baseView.addSubview(participateButton)
+        
+        baseView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateLabel]))
+        
+        baseView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":descriptionLabel]))
+        
+        baseView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":imageView]))
+        //baseView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateButton]))
+        participateButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        participateButton.centerXAnchor.constraint(equalToSystemSpacingAfter: baseView.centerXAnchor, multiplier: 0).isActive = true
+        baseView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[V0]-5-[desc]-5-[img(200)]-10-[button(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateLabel,"desc": descriptionLabel,"img":imageView,"button": participateButton]))
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        self.addSubview(participateLabel)
-        self.addSubview(descriptionLabel)
-        self.addSubview(imageView)
-        self.addSubview(participateButton)
+        addViewElements()
         
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateLabel]))
         
-         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":descriptionLabel]))
-        
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":imageView]))
-        
-        participateButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        participateButton.centerXAnchor.constraint(equalToSystemSpacingAfter: self.centerXAnchor, multiplier: 0).isActive = true
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[V0]-5-[desc]-5-[img(200)]-5-[button(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateLabel,"desc": descriptionLabel,"img":imageView,"button": participateButton]))
-        
-
     }
     
     required init?(coder aDecoder: NSCoder) {

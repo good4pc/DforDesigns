@@ -8,12 +8,15 @@
 
 import UIKit
 
+//MARK: CALayer
+
 extension CALayer {
     func addBorder(with color: UIColor) {
         self.borderColor = color.cgColor
         self.borderWidth = 2.0
     }
 }
+//MARK: UIVIew
 
 extension UIView {
     func addUnderLine() {
@@ -23,8 +26,21 @@ extension UIView {
         layer.backgroundColor = UIColor.lightGray.cgColor
         self.layer.addSublayer(layer)
     }
+    
+    func addProgressIndicator () {
+        self.backgroundColor = UIColor.darkGray
+        for (index,subView) in subviews.enumerated() {
+            if index == 0{
+                subView.backgroundColor = UIColor.darkGray
+            } else {
+                subView.backgroundColor = UIColor.lightGray
+
+            }
+        }
+    }
   
 }
+//MARK: String
 
 extension String {
     func takeDataFromUrl() -> Data? {
@@ -39,6 +55,7 @@ extension String {
         
     }
 }
+//MARK: ImageView
 
 
 extension UIImageView {
@@ -65,6 +82,29 @@ extension UIImageView {
                     completionHandler(nil)
                 }
                 }.resume()
+        }
+    }
+}
+//MARK: CollectionView
+extension UICollectionViewCell {
+    func findHEightOfCell() -> CGFloat {
+        //self.superview?.layoutSubviews()
+      //  self.setNeedsLayout()
+     self.layoutIfNeeded()
+      //  self.layoutIfNeeded()
+        if let lastItem = self.viewWithTag(334)?.subviews.last {
+            
+//            baseView.setNeedsDisplay()
+//           baseView.layoutIfNeeded()
+//            baseView.layoutSubviews()
+           print("BaseView frame --------------------",lastItem.frame)
+            //print(baseView.frame)
+            let height = lastItem.frame.origin.y + lastItem.frame.size.height + 30.0
+            print(height)
+            return height
+        }
+        else {
+            return 0.0
         }
     }
 }

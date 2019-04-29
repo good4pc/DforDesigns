@@ -15,15 +15,16 @@ fileprivate enum Section: Int{
 
 fileprivate enum SectionHeight: CGFloat {
     case carousel = 220
-    case challenge = 400
+    case challenge = 381
 }
 
 class MainViewController: UIViewController, PresenterDelegate {
-
+    
     fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
     fileprivate let carouselIdentifier = "carouselCellIDentifier"
     fileprivate let challengeIdentifier = "challengeIdentifier"
     
+    fileprivate var refreshController = UIRefreshControl()
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -31,7 +32,7 @@ class MainViewController: UIViewController, PresenterDelegate {
         collectionView.backgroundColor = UIColor.white
         collectionView.isPagingEnabled = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.bounces = false
+        collectionView.bounces = true
         return collectionView
     }()
     
@@ -41,12 +42,26 @@ class MainViewController: UIViewController, PresenterDelegate {
         self.title = "DForDesign"
         initializeCollectionView()
         initializeSearchButtonOnNavigationBar()
+        presenter = MainViewControllerPresenter()
+        presenter.delegate = self
         callInitialData()
+        addRefreshController()
+    }
+    
+    //MARK: - Refresh controller
+    private func addRefreshController() {
+        collectionView.addSubview(refreshController)
+        refreshController.addTarget(self, action: #selector(refreshContents), for: .valueChanged)
+        
+    }
+    
+    @objc func refreshContents() {
+        callInitialData()
+        refreshController.endRefreshing()
     }
     
     private func callInitialData() {
-        presenter = MainViewControllerPresenter()
-        presenter.delegate = self
+        
         presenter.getMainData()
     }
     
@@ -69,13 +84,15 @@ class MainViewController: UIViewController, PresenterDelegate {
         collectionView.dataSource = self
     }
     
+    //MARK: - Updating UI after webservice calls
+    
     func updateUI() {
         DispatchQueue.main.async {
-           self.collectionView.reloadData()
+            self.collectionView.reloadData()
         }
         
     }
-
+    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -85,7 +102,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        
+        return presenter.getNumberOfRowsInMainMenu(in: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,14 +136,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == Section.carousel.rawValue {
-             return CGSize(width: self.view.frame.size.width, height: SectionHeight.carousel.rawValue)
+            return CGSize(width: self.view.frame.size.width, height: SectionHeight.carousel.rawValue)
         }
         else if indexPath.section == Section.challengeSection.rawValue {
-             return CGSize(width: self.view.frame.size.width, height: SectionHeight.challenge.rawValue)
+            //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
+            return CGSize(width: self.view.frame.width, height: SectionHeight.challenge.rawValue)
         }
         
-      
+        
         return CGSize(width: self.view.frame.width, height: self.view.frame.height)
     }
+    
+    
 }
+
 

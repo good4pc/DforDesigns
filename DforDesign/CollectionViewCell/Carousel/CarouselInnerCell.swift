@@ -27,6 +27,8 @@ class CarouselInnerCell: UICollectionViewCell {
         addImageViewToCarousel()
     }
     
+  
+    
     fileprivate func addImageViewToCarousel() {
         self.addSubview(imageView)
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": imageView]))

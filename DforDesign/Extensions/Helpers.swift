@@ -54,6 +54,17 @@ extension String {
         }
         
     }
+    /** METHOD TO FING OF THE HEIGHT OT THE LABEL IN REGARDS TO THE STRING INSIDE THE LABEL
+     **/
+    func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let label =  UILabel(frame: CGRect(x: 0, y: 0, width: width, height: .greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.text = self
+        label.font = font
+        label.sizeToFit()
+        
+        return label.frame.height
+    }
 }
 //MARK: ImageView
 
@@ -85,26 +96,4 @@ extension UIImageView {
         }
     }
 }
-//MARK: CollectionView
-extension UICollectionViewCell {
-    func findHEightOfCell() -> CGFloat {
-        //self.superview?.layoutSubviews()
-      //  self.setNeedsLayout()
-     self.layoutIfNeeded()
-      //  self.layoutIfNeeded()
-        if let lastItem = self.viewWithTag(334)?.subviews.last {
-            
-//            baseView.setNeedsDisplay()
-//           baseView.layoutIfNeeded()
-//            baseView.layoutSubviews()
-           print("BaseView frame --------------------",lastItem.frame)
-            //print(baseView.frame)
-            let height = lastItem.frame.origin.y + lastItem.frame.size.height + 30.0
-            print(height)
-            return height
-        }
-        else {
-            return 0.0
-        }
-    }
-}
+

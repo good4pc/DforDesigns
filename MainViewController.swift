@@ -15,7 +15,7 @@ fileprivate enum Section: Int{
 
 fileprivate enum SectionHeight: CGFloat {
     case carousel = 220
-    case challenge = 381
+    case challenge = 398
 }
 
 class MainViewController: UIViewController, PresenterDelegate {
@@ -28,6 +28,7 @@ class MainViewController: UIViewController, PresenterDelegate {
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
+        //flowLayout.estimatedItemSize = CGSize(width: 200, height: 100)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = UIColor.white
         collectionView.isPagingEnabled = false
@@ -49,6 +50,7 @@ class MainViewController: UIViewController, PresenterDelegate {
     }
     
     //MARK: - Refresh controller
+    
     private func addRefreshController() {
         collectionView.addSubview(refreshController)
         refreshController.addTarget(self, action: #selector(refreshContents), for: .valueChanged)
@@ -106,6 +108,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return presenter.getNumberOfRowsInMainMenu(in: section)
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch indexPath.section {
@@ -139,8 +142,23 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: self.view.frame.size.width, height: SectionHeight.carousel.rawValue)
         }
         else if indexPath.section == Section.challengeSection.rawValue {
-            //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
-            return CGSize(width: self.view.frame.width, height: SectionHeight.challenge.rawValue)
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
+            cell.contentView.layoutIfNeeded()
+            //Y coordinates fecteched from the UI widgets are not showing the exact values that we provided.So manually calculated and added the y cordinates.
+            var heightCalculated: CGFloat = 25.0
+            
+            for view in cell.contentView.subviews {
+                heightCalculated = heightCalculated + view.bounds.size.height
+            }
+            
+            if let mainComponent = presenter.mainComponents {
+                
+                heightCalculated = heightCalculated + mainComponent.challenge.heading.height(constraintedWidth: self.view.bounds.width, font: UIFont.boldSystemFont(ofSize: 18))
+                heightCalculated = heightCalculated + mainComponent.challenge.description.height(constraintedWidth: self.view.bounds.width, font: UIFont.systemFont(ofSize: 15))
+                
+            }
+            return CGSize(width: self.view.frame.width, height: heightCalculated)
         }
         
         

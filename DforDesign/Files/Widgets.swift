@@ -15,6 +15,14 @@ class Widgets {
         return label
     }()
     
+    let WinnersAnnounced : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.textAlignment = .center
+        label.text = "WINNERS ANNOUNCED"
+        return label
+    }()
     
     let imageView: UIImageView = {
         let imageView = UIImageView()

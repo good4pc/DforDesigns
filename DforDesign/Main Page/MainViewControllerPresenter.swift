@@ -11,6 +11,7 @@ import UIKit
 protocol MainViewControllerPresentable {
     func callWebservice()
     var mainComponents: MainComponenets {get set}
+     func getChallengeTitle() -> String
 }
 
 protocol PresenterDelegate: NSObject {
@@ -31,6 +32,24 @@ class MainViewControllerPresenter: NSObject {
         } else {
             return 0
         }
+    }
+    
+    //MARK: challenge
+   
+    func getNumberOfRowsInMainMenu(in section: Int) -> Int {
+        if let mainComponents = mainComponents {
+            if section == 0 {
+               return (mainComponents.carouselItems.count > 0) ?  1 :  0
+            } else if section == 1 {
+               return 1
+            } else {
+                return 1
+            }
+        } else {
+            return 0
+        }
+        
+        
     }
     
     func getMainData() {

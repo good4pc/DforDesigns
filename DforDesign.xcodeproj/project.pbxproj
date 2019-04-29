@@ -39,6 +39,12 @@
 		8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
 		8DC3EF9A2273A19D00AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF762270E78900AB7555 /* MainViewController.swift */; };
 		8DC3EF9B2273E49600AB7555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF3A2270E41000AB7555 /* Main.storyboard */; };
+		8DC3EF9F2273F4EB00AB7555 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9E2273F4EB00AB7555 /* ChallengeCell.swift */; };
+		8DC3EFA02273F4EB00AB7555 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9E2273F4EB00AB7555 /* ChallengeCell.swift */; };
+		8DC3EFA32273F56A00AB7555 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFA22273F56A00AB7555 /* Widgets.swift */; };
+		8DC3EFA42273F56A00AB7555 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFA22273F56A00AB7555 /* Widgets.swift */; };
+		8DC3EFA92277A8D100AB7555 /* WinnersHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFA82277A8D100AB7555 /* WinnersHeader.swift */; };
+		8DC3EFAA2277A8D100AB7555 /* WinnersHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFA82277A8D100AB7555 /* WinnersHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +91,9 @@
 		8DC3EF8F2272610700AB7555 /* DataTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTranslator.swift; sourceTree = "<group>"; };
 		8DC3EF93227272D100AB7555 /* MainData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MainData.json; sourceTree = "<group>"; };
 		8DC3EF9722728CC500AB7555 /* MainComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainComponents.swift; sourceTree = "<group>"; };
+		8DC3EF9E2273F4EB00AB7555 /* ChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
+		8DC3EFA22273F56A00AB7555 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
+		8DC3EFA82277A8D100AB7555 /* WinnersHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,12 +144,14 @@
 		8DC3EF352270E41000AB7555 /* DforDesign */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EFA12273F55C00AB7555 /* Files */,
 				8DC3EF9622728CB300AB7555 /* Model */,
 				8DC3EF92227272A900AB7555 /* JsonFiles */,
 				8DC3EF8B227259D700AB7555 /* Helper */,
 				8DC3EF842272527B00AB7555 /* Webservice */,
 				8DC3EF812272513200AB7555 /* Search */,
 				8DC3EF6F2270E69F00AB7555 /* Extensions */,
+				8DC3EFA72277A88E00AB7555 /* CollectionViewHeaders */,
 				8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */,
 				8DC3EF672270E4DE00AB7555 /* Main Page */,
 				8DC3EF362270E41000AB7555 /* AppDelegate.swift */,
@@ -184,6 +195,7 @@
 		8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EF9D2273F48600AB7555 /* Challenge */,
 				8DC3EF792270F2C400AB7555 /* Carousel */,
 				8DC3EF6C2270E5BF00AB7555 /* DForDesignFeedCell.swift */,
 				8DC3EF732270E71B00AB7555 /* SmartBoyFeedCell.swift */,
@@ -254,6 +266,30 @@
 				8DC3EF9722728CC500AB7555 /* MainComponents.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8DC3EF9D2273F48600AB7555 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EF9E2273F4EB00AB7555 /* ChallengeCell.swift */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
+		8DC3EFA12273F55C00AB7555 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EFA22273F56A00AB7555 /* Widgets.swift */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		8DC3EFA72277A88E00AB7555 /* CollectionViewHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EFA82277A8D100AB7555 /* WinnersHeader.swift */,
+			);
+			path = CollectionViewHeaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +431,7 @@
 				8DC3EF8D227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */,
 				8DC3EF902272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EF372270E41000AB7555 /* AppDelegate.swift in Sources */,
+				8DC3EF9F2273F4EB00AB7555 /* ChallengeCell.swift in Sources */,
 				8DC3EF832272515700AB7555 /* SearchViewController.swift in Sources */,
 				8DC3EF3F2270E41000AB7555 /* DforDesign.xcdatamodeld in Sources */,
 				8DC3EF7E227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
@@ -402,6 +439,8 @@
 				8DC3EF86227252C700AB7555 /* WebseriveCaller.swift in Sources */,
 				8DC3EF772270E78900AB7555 /* MainViewController.swift in Sources */,
 				8DC3EF712270E6AE00AB7555 /* Helpers.swift in Sources */,
+				8DC3EFA92277A8D100AB7555 /* WinnersHeader.swift in Sources */,
+				8DC3EFA32273F56A00AB7555 /* Widgets.swift in Sources */,
 				8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,12 +454,15 @@
 				8DC3EF8E227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */,
 				8DC3EF9A2273A19D00AB7555 /* MainViewController.swift in Sources */,
 				8DC3EF4F2270E41200AB7555 /* DforDesignTests.swift in Sources */,
+				8DC3EFA42273F56A00AB7555 /* Widgets.swift in Sources */,
 				8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
 				8DC3EF6E2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
 				8DC3EF912272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */,
 				8DC3EF722270E6AE00AB7555 /* Helpers.swift in Sources */,
+				8DC3EFA02273F4EB00AB7555 /* ChallengeCell.swift in Sources */,
 				8DC3EF7F227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
+				8DC3EFAA2277A8D100AB7555 /* WinnersHeader.swift in Sources */,
 				8DC3EF87227252C700AB7555 /* WebseriveCaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

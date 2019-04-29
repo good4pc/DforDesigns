@@ -8,12 +8,15 @@
 
 import UIKit
 
+//MARK: CALayer
+
 extension CALayer {
     func addBorder(with color: UIColor) {
         self.borderColor = color.cgColor
         self.borderWidth = 2.0
     }
 }
+//MARK: UIVIew
 
 extension UIView {
     func addUnderLine() {
@@ -23,8 +26,21 @@ extension UIView {
         layer.backgroundColor = UIColor.lightGray.cgColor
         self.layer.addSublayer(layer)
     }
+    
+    func addProgressIndicator () {
+        self.backgroundColor = UIColor.darkGray
+        for (index,subView) in subviews.enumerated() {
+            if index == 0{
+                subView.backgroundColor = UIColor.darkGray
+            } else {
+                subView.backgroundColor = UIColor.lightGray
+
+            }
+        }
+    }
   
 }
+//MARK: String
 
 extension String {
     func takeDataFromUrl() -> Data? {
@@ -38,7 +54,19 @@ extension String {
         }
         
     }
+    /** METHOD TO FING OF THE HEIGHT OT THE LABEL IN REGARDS TO THE STRING INSIDE THE LABEL
+     **/
+    func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let label =  UILabel(frame: CGRect(x: 0, y: 0, width: width, height: .greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.text = self
+        label.font = font
+        label.sizeToFit()
+        
+        return label.frame.height
+    }
 }
+//MARK: ImageView
 
 
 extension UIImageView {
@@ -68,3 +96,4 @@ extension UIImageView {
         }
     }
 }
+

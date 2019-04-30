@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Widgets {
+private class Widgets {
     let participateLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,5 +35,13 @@ class Widgets {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    let contentsView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 1.0
+        return view
     }()
 }

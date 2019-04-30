@@ -20,7 +20,6 @@
 		8DC3EF722270E6AE00AB7555 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF702270E6AE00AB7555 /* Helpers.swift */; };
 		8DC3EF742270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF732270E71B00AB7555 /* SmartBoyFeedCell.swift */; };
 		8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF732270E71B00AB7555 /* SmartBoyFeedCell.swift */; };
-		8DC3EF772270E78900AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF762270E78900AB7555 /* MainViewController.swift */; };
 		8DC3EF7B2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7A2270F2D800AB7555 /* CarouselCollectionViewCell.swift */; };
 		8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7A2270F2D800AB7555 /* CarouselCollectionViewCell.swift */; };
 		8DC3EF7E227105CA00AB7555 /* CarouselInnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF7D227105CA00AB7555 /* CarouselInnerCell.swift */; };
@@ -37,7 +36,6 @@
 		8DC3EF95227272D100AB7555 /* MainData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF93227272D100AB7555 /* MainData.json */; };
 		8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
 		8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9722728CC500AB7555 /* MainComponents.swift */; };
-		8DC3EF9A2273A19D00AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF762270E78900AB7555 /* MainViewController.swift */; };
 		8DC3EF9B2273E49600AB7555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF3A2270E41000AB7555 /* Main.storyboard */; };
 		8DC3EF9F2273F4EB00AB7555 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9E2273F4EB00AB7555 /* ChallengeCell.swift */; };
 		8DC3EFA02273F4EB00AB7555 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF9E2273F4EB00AB7555 /* ChallengeCell.swift */; };
@@ -45,6 +43,16 @@
 		8DC3EFA42273F56A00AB7555 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFA22273F56A00AB7555 /* Widgets.swift */; };
 		8DC3EFA92277A8D100AB7555 /* WinnersHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFA82277A8D100AB7555 /* WinnersHeader.swift */; };
 		8DC3EFAA2277A8D100AB7555 /* WinnersHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFA82277A8D100AB7555 /* WinnersHeader.swift */; };
+		8DC3EFAD2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFAC2277BF5B00AB7555 /* WinnersCollectionViewCell.swift */; };
+		8DC3EFAE2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFAC2277BF5B00AB7555 /* WinnersCollectionViewCell.swift */; };
+		8DC3EFB02277D17000AB7555 /* WinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFAF2277D17000AB7555 /* WinnerCell.swift */; };
+		8DC3EFB12277D17000AB7555 /* WinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFAF2277D17000AB7555 /* WinnerCell.swift */; };
+		8DC3EFB32279014700AB7555 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFB22279014700AB7555 /* BaseViewController.swift */; };
+		8DC3EFB42279014700AB7555 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFB22279014700AB7555 /* BaseViewController.swift */; };
+		8DC3EFB72279050200AB7555 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFB62279050200AB7555 /* MenuViewController.swift */; };
+		8DC3EFB82279050200AB7555 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFB62279050200AB7555 /* MenuViewController.swift */; };
+		8DC3EFBB2279057F00AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFBA2279057F00AB7555 /* MainViewController.swift */; };
+		8DC3EFBC2279057F00AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFBA2279057F00AB7555 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +89,6 @@
 		8DC3EF6C2270E5BF00AB7555 /* DForDesignFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DForDesignFeedCell.swift; sourceTree = "<group>"; };
 		8DC3EF702270E6AE00AB7555 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8DC3EF732270E71B00AB7555 /* SmartBoyFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartBoyFeedCell.swift; sourceTree = "<group>"; };
-		8DC3EF762270E78900AB7555 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../MainViewController.swift; sourceTree = "<group>"; };
 		8DC3EF7A2270F2D800AB7555 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		8DC3EF7D227105CA00AB7555 /* CarouselInnerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselInnerCell.swift; sourceTree = "<group>"; };
 		8DC3EF822272515700AB7555 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +101,11 @@
 		8DC3EF9E2273F4EB00AB7555 /* ChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
 		8DC3EFA22273F56A00AB7555 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		8DC3EFA82277A8D100AB7555 /* WinnersHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersHeader.swift; sourceTree = "<group>"; };
+		8DC3EFAC2277BF5B00AB7555 /* WinnersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersCollectionViewCell.swift; sourceTree = "<group>"; };
+		8DC3EFAF2277D17000AB7555 /* WinnerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerCell.swift; sourceTree = "<group>"; };
+		8DC3EFB22279014700AB7555 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8DC3EFB62279050200AB7555 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		8DC3EFBA2279057F00AB7555 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +156,7 @@
 		8DC3EF352270E41000AB7555 /* DforDesign */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EFB92279051300AB7555 /* ViewControllers */,
 				8DC3EFA12273F55C00AB7555 /* Files */,
 				8DC3EF9622728CB300AB7555 /* Model */,
 				8DC3EF92227272A900AB7555 /* JsonFiles */,
@@ -153,7 +166,6 @@
 				8DC3EF6F2270E69F00AB7555 /* Extensions */,
 				8DC3EFA72277A88E00AB7555 /* CollectionViewHeaders */,
 				8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */,
-				8DC3EF672270E4DE00AB7555 /* Main Page */,
 				8DC3EF362270E41000AB7555 /* AppDelegate.swift */,
 				8DC3EF3A2270E41000AB7555 /* Main.storyboard */,
 				8DC3EF402270E41200AB7555 /* Assets.xcassets */,
@@ -186,8 +198,9 @@
 		8DC3EF672270E4DE00AB7555 /* Main Page */ = {
 			isa = PBXGroup;
 			children = (
-				8DC3EF762270E78900AB7555 /* MainViewController.swift */,
+				8DC3EFBA2279057F00AB7555 /* MainViewController.swift */,
 				8DC3EF8C227259F700AB7555 /* MainViewControllerPresenter.swift */,
+				8DC3EFB22279014700AB7555 /* BaseViewController.swift */,
 			);
 			path = "Main Page";
 			sourceTree = "<group>";
@@ -195,6 +208,7 @@
 		8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EFAB2277BF1900AB7555 /* Winners */,
 				8DC3EF9D2273F48600AB7555 /* Challenge */,
 				8DC3EF792270F2C400AB7555 /* Carousel */,
 				8DC3EF6C2270E5BF00AB7555 /* DForDesignFeedCell.swift */,
@@ -290,6 +304,32 @@
 				8DC3EFA82277A8D100AB7555 /* WinnersHeader.swift */,
 			);
 			path = CollectionViewHeaders;
+			sourceTree = "<group>";
+		};
+		8DC3EFAB2277BF1900AB7555 /* Winners */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EFAC2277BF5B00AB7555 /* WinnersCollectionViewCell.swift */,
+				8DC3EFAF2277D17000AB7555 /* WinnerCell.swift */,
+			);
+			path = Winners;
+			sourceTree = "<group>";
+		};
+		8DC3EFB5227904E700AB7555 /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EFB62279050200AB7555 /* MenuViewController.swift */,
+			);
+			path = MenuViewController;
+			sourceTree = "<group>";
+		};
+		8DC3EFB92279051300AB7555 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EF672270E4DE00AB7555 /* Main Page */,
+				8DC3EFB5227904E700AB7555 /* MenuViewController */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,18 +470,22 @@
 				8DC3EF742270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
 				8DC3EF8D227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */,
 				8DC3EF902272610700AB7555 /* DataTranslator.swift in Sources */,
+				8DC3EFB32279014700AB7555 /* BaseViewController.swift in Sources */,
 				8DC3EF372270E41000AB7555 /* AppDelegate.swift in Sources */,
 				8DC3EF9F2273F4EB00AB7555 /* ChallengeCell.swift in Sources */,
 				8DC3EF832272515700AB7555 /* SearchViewController.swift in Sources */,
 				8DC3EF3F2270E41000AB7555 /* DforDesign.xcdatamodeld in Sources */,
+				8DC3EFAD2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */,
 				8DC3EF7E227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
+				8DC3EFB72279050200AB7555 /* MenuViewController.swift in Sources */,
+				8DC3EFB02277D17000AB7555 /* WinnerCell.swift in Sources */,
 				8DC3EF6D2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
 				8DC3EF86227252C700AB7555 /* WebseriveCaller.swift in Sources */,
-				8DC3EF772270E78900AB7555 /* MainViewController.swift in Sources */,
 				8DC3EF712270E6AE00AB7555 /* Helpers.swift in Sources */,
 				8DC3EFA92277A8D100AB7555 /* WinnersHeader.swift in Sources */,
 				8DC3EFA32273F56A00AB7555 /* Widgets.swift in Sources */,
 				8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */,
+				8DC3EFBB2279057F00AB7555 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,16 +494,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC3EF8A2272571E00AB7555 /* WebserviceTests.swift in Sources */,
+				8DC3EFB12277D17000AB7555 /* WinnerCell.swift in Sources */,
 				8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */,
 				8DC3EF8E227259F700AB7555 /* MainViewControllerPresenter.swift in Sources */,
-				8DC3EF9A2273A19D00AB7555 /* MainViewController.swift in Sources */,
+				8DC3EFB42279014700AB7555 /* BaseViewController.swift in Sources */,
+				8DC3EFBC2279057F00AB7555 /* MainViewController.swift in Sources */,
 				8DC3EF4F2270E41200AB7555 /* DforDesignTests.swift in Sources */,
 				8DC3EFA42273F56A00AB7555 /* Widgets.swift in Sources */,
 				8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
+				8DC3EFAE2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */,
 				8DC3EF6E2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
 				8DC3EF912272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */,
 				8DC3EF722270E6AE00AB7555 /* Helpers.swift in Sources */,
+				8DC3EFB82279050200AB7555 /* MenuViewController.swift in Sources */,
 				8DC3EFA02273F4EB00AB7555 /* ChallengeCell.swift in Sources */,
 				8DC3EF7F227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
 				8DC3EFAA2277A8D100AB7555 /* WinnersHeader.swift in Sources */,

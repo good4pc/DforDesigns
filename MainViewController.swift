@@ -20,11 +20,12 @@ fileprivate enum SectionHeight: CGFloat {
 
 
 class MainViewController: UIViewController, PresenterDelegate {
-    
+    var delegate: MenuButtonDelegate?
     fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
     fileprivate let carouselIdentifier = "carouselCellIDentifier"
     fileprivate let challengeIdentifier = "challengeIdentifier"
-     fileprivate let winnerHeaderIDentifier = "winnerHeaderIdentifier"
+    fileprivate let winnerHeaderIDentifier = "winnerHeaderIdentifier"
+    fileprivate let winnersCollectionViewCellIdentifier = "winnersCollectionViewCellIdentifier"
     
     fileprivate var refreshController = UIRefreshControl()
     let collectionView: UICollectionView = {
@@ -49,6 +50,26 @@ class MainViewController: UIViewController, PresenterDelegate {
         presenter.delegate = self
         callInitialData()
         addRefreshController()
+        addNavigationMenuButton()
+        
+       // addABorderOnLeft()
+        
+    }
+    
+    func addABorderOnLeft() {
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: 1, height: self.view.frame.size.height)
+        self.view.layer.addSublayer(layer)
+        layer.backgroundColor = UIColor.lightGray.cgColor
+    }
+    
+    private func addNavigationMenuButton() {
+        let menuButton = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(showMenuBar))
+        self.navigationItem.leftBarButtonItem = menuButton
+    }
+    
+    @objc func showMenuBar() {
+        delegate?.toggleMenuBar()
     }
     
     //MARK: - Refresh controller
@@ -56,7 +77,6 @@ class MainViewController: UIViewController, PresenterDelegate {
     private func addRefreshController() {
         collectionView.addSubview(refreshController)
         refreshController.addTarget(self, action: #selector(refreshContents), for: .valueChanged)
-        
     }
     
     @objc func refreshContents() {
@@ -86,6 +106,9 @@ class MainViewController: UIViewController, PresenterDelegate {
         collectionView.register(ChallengeCell.self, forCellWithReuseIdentifier: challengeIdentifier)
         
         collectionView.register(WinnerHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: winnerHeaderIDentifier)
+        
+        collectionView.register(WinnersCollectionViewCell.self, forCellWithReuseIdentifier: winnersCollectionViewCellIdentifier)
+
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -151,7 +174,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
             
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath) as! DForDesignFeedCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: winnersCollectionViewCellIdentifier, for: indexPath) as! WinnersCollectionViewCell
+            if let mainComponent = presenter.mainComponents {
+                cell.winners = mainComponent.winners
+            }
             return cell
             
         }
@@ -200,7 +226,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         
-        return CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        return CGSize(width: self.view.frame.width, height: 350 )
     }
     
     

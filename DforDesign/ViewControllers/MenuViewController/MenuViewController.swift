@@ -7,13 +7,20 @@
 //
 
 import UIKit
+
+protocol MenuViewControlDelegate: NSObjectProtocol {
+    func closeView()
+}
+
+
 class MenuViewController: UIViewController {
+    weak var delegate: MenuViewControlDelegate?
+    var sam: String!
     fileprivate let identifier = "tableViewCellIdentifier"
-    
-    var section0 = ["Participate Home", "Open Design Challenges", "Past Design Challenges"]
-    var section1 = ["Communtiy Home", "Browse The Community", "Designers Speak"]
-    var section2: [String] = []
-    var headerTitle = ["Participate","Community", "Resell"]
+    fileprivate var section0 = ["Participate Home", "Open Design Challenges", "Past Design Challenges"]
+    fileprivate var section1 = ["Communtiy Home", "Browse The Community", "Designers Speak"]
+    fileprivate var section2: [String] = []
+    fileprivate var headerTitle = ["Participate","Community", "Resell"]
     
     let tableView: UITableView  = {
         let tableView = UITableView()
@@ -29,7 +36,7 @@ class MenuViewController: UIViewController {
     }
     
 }
-
+//MARK: - TableViewDelegates
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,14 +74,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-}
-
-class MenuBarTableViewCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.closeView()
     }
 }

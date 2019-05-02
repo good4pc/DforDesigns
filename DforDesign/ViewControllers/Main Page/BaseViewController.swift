@@ -12,9 +12,9 @@ protocol MenuButtonDelegate: NSObjectProtocol {
     func toggleMenuBar()
 }
 
-class BaseViewController: UIViewController,MenuButtonDelegate {
+class BaseViewController: UIViewController,MenuButtonDelegate,MenuViewControlDelegate {
     
-    var menuViewController: UIViewController!
+    var menuViewController: MenuViewController!
     var centerController: UIViewController!
     var isExpanded: Bool = false
     fileprivate func addMainViewController() {
@@ -31,10 +31,15 @@ class BaseViewController: UIViewController,MenuButtonDelegate {
         addMainViewController()
         if menuViewController == nil {
             menuViewController = MenuViewController()
+            menuViewController.delegate = self
             view.insertSubview(menuViewController.view, at: 0)
             addChild(menuViewController)
             menuViewController.didMove(toParent: self)
         }
+    }
+    
+    func closeView() {
+        toggleMenuBar()
     }
     
     func toggleMenuBar() {

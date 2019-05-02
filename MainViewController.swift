@@ -11,6 +11,8 @@ fileprivate enum Section: Int{
     case carousel = 0
     case challengeSection1 = 1
     case challengeSection2 = 2
+    case winners = 3
+    case getStarted = 4
 }
 
 fileprivate enum SectionHeight: CGFloat {
@@ -20,13 +22,14 @@ fileprivate enum SectionHeight: CGFloat {
 
 
 class MainViewController: UIViewController, PresenterDelegate {
-    var delegate: MenuButtonDelegate?
+    weak var delegate: MenuButtonDelegate?
     fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
     fileprivate let carouselIdentifier = "carouselCellIDentifier"
     fileprivate let challengeIdentifier = "challengeIdentifier"
     fileprivate let winnerHeaderIDentifier = "winnerHeaderIdentifier"
     fileprivate let winnersCollectionViewCellIdentifier = "winnersCollectionViewCellIdentifier"
-    
+    fileprivate let getStartedIdentifier = "getStartedIdentifier"
+
     fileprivate var refreshController = UIRefreshControl()
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -108,6 +111,8 @@ class MainViewController: UIViewController, PresenterDelegate {
         collectionView.register(WinnerHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: winnerHeaderIDentifier)
         
         collectionView.register(WinnersCollectionViewCell.self, forCellWithReuseIdentifier: winnersCollectionViewCellIdentifier)
+        
+         collectionView.register(GetStartedCollectionViewCell.self, forCellWithReuseIdentifier: getStartedIdentifier)
 
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -127,7 +132,7 @@ class MainViewController: UIViewController, PresenterDelegate {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -171,6 +176,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if let mainComponent = presenter.mainComponents {
                 cell.challenge = mainComponent.challenge
             }
+            return cell
+            
+        case Section.getStarted.rawValue:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: getStartedIdentifier, for: indexPath) as! GetStartedCollectionViewCell
             return cell
             
         default:
@@ -223,6 +232,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
             }
             return CGSize(width: self.view.frame.width, height: heightCalculated)
+        }
+        else if indexPath.section == Section.getStarted.rawValue {
+            return CGSize(width: self.view.frame.width, height: 240 )
         }
         
         

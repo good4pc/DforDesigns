@@ -53,6 +53,8 @@
 		8DC3EFB82279050200AB7555 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFB62279050200AB7555 /* MenuViewController.swift */; };
 		8DC3EFBB2279057F00AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFBA2279057F00AB7555 /* MainViewController.swift */; };
 		8DC3EFBC2279057F00AB7555 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFBA2279057F00AB7555 /* MainViewController.swift */; };
+		8DC3EFBF227A6A3B00AB7555 /* MenuBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFBE227A6A3B00AB7555 /* MenuBarTableViewCell.swift */; };
+		8DC3EFC0227A6A3B00AB7555 /* MenuBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFBE227A6A3B00AB7555 /* MenuBarTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,7 @@
 		8DC3EFB22279014700AB7555 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8DC3EFB62279050200AB7555 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8DC3EFBA2279057F00AB7555 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = SOURCE_ROOT; };
+		8DC3EFBE227A6A3B00AB7555 /* MenuBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,7 @@
 				8DC3EF6F2270E69F00AB7555 /* Extensions */,
 				8DC3EFA72277A88E00AB7555 /* CollectionViewHeaders */,
 				8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */,
+				8DC3EFBD227A6A1800AB7555 /* TableViewCell */,
 				8DC3EF362270E41000AB7555 /* AppDelegate.swift */,
 				8DC3EF3A2270E41000AB7555 /* Main.storyboard */,
 				8DC3EF402270E41200AB7555 /* Assets.xcassets */,
@@ -332,6 +336,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		8DC3EFBD227A6A1800AB7555 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EFBE227A6A3B00AB7555 /* MenuBarTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -477,6 +489,7 @@
 				8DC3EF3F2270E41000AB7555 /* DforDesign.xcdatamodeld in Sources */,
 				8DC3EFAD2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */,
 				8DC3EF7E227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
+				8DC3EFBF227A6A3B00AB7555 /* MenuBarTableViewCell.swift in Sources */,
 				8DC3EFB72279050200AB7555 /* MenuViewController.swift in Sources */,
 				8DC3EFB02277D17000AB7555 /* WinnerCell.swift in Sources */,
 				8DC3EF6D2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
@@ -507,6 +520,7 @@
 				8DC3EF912272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */,
 				8DC3EF722270E6AE00AB7555 /* Helpers.swift in Sources */,
+				8DC3EFC0227A6A3B00AB7555 /* MenuBarTableViewCell.swift in Sources */,
 				8DC3EFB82279050200AB7555 /* MenuViewController.swift in Sources */,
 				8DC3EFA02273F4EB00AB7555 /* ChallengeCell.swift in Sources */,
 				8DC3EF7F227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,

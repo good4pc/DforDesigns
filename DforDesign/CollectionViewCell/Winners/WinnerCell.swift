@@ -73,6 +73,8 @@ class WinnerCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 1.0
+        view.layer.cornerRadius = 8.0
+
         return view
     }()
     

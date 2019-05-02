@@ -55,6 +55,13 @@ private class Widgets {
         return view
     }()
     
+    func addABorderOnLeft() {
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: 1, height: 10)
+       // self.view.layer.addSublayer(layer)
+        layer.backgroundColor = UIColor.lightGray.cgColor
+    }
+    
     /**
  
      self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": imageView]))

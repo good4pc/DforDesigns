@@ -1,26 +1,31 @@
 //
-//  MainViewControllerPresenter.swift
+//  MainViewModel.swift
 //  DforDesign
 //
-//  Created by Prasanth pc on 2019-04-25.
+//  Created by Prasanth pc on 2019-05-02.
 //  Copyright © 2019 Prasanth pc. All rights reserved.
 //
 
 import UIKit
 
-protocol MainViewControllerPresentable {
-    func callWebservice()
-    var mainComponents: MainComponenets {get set}
-     func getChallengeTitle() -> String
+enum CompletionStatus {
+    case Succes
+    case Failure(String)
+    
+    func description() -> String {
+        switch self {
+        case .Succes:
+            return "Succeeded"
+        case .Failure(let errorDescription):
+            return "Failed with description- \(errorDescription)"
+        }
+    }
 }
 
-protocol PresenterDelegate: NSObject {
-    func updateUI()
-}
-
-class MainViewControllerPresenter: NSObject {
+class MainViewModel: NSObject {
+    
+    
     var mainComponents: MainComponenets?
-    weak var delegate: PresenterDelegate?
     let carouselMaximum = 9999
     let carouselTiming = 3.5
     
@@ -35,56 +40,52 @@ class MainViewControllerPresenter: NSObject {
     }
     
     //MARK: challenge
-   
+    
     func getNumberOfRowsInMainMenu(in section: Int) -> Int {
         if let mainComponents = mainComponents {
             if section == 0 {
-               return (mainComponents.carouselItems.count > 0) ?  1 :  0
+                return (mainComponents.carouselItems.count > 0) ?  1 :  0
             } else if section == 1 {
-               return 1
+                return 1
             } else {
                 return 1
             }
         } else {
             return 0
         }
-        
-        
     }
     
-    func getMainData() {
-        //TODO : url should be changed to the approriate value
-        
-        let urlString = "https://www.google.ca/"
+    func initialize(completionHandler:@escaping (_ status: CompletionStatus) -> Void) {
+        let urlString = baseUrl
         do {
             try WebServiceCaller.fetchData(from: urlString) { (data, error) in
                 if let data = data {
                     do {
-                         self.mainComponents = try DataTranslator.decodeMainData(with: data)
+                        self.mainComponents = try DataTranslator.decodeMainData(with: data)
                     } catch let error as WebserviceError {
-                        print(error.description)
-                    }
+                        completionHandler(.Failure(error.description))
+                        }
                     catch let error {
-                        print(error.localizedDescription)
+                         completionHandler(.Failure(error.localizedDescription))
                     }
-                   
+                    
                     //print(self.mainComponents)
                 } else {
                     self.mainComponents = nil
                 }
-                self.delegate?.updateUI()
+                completionHandler(.Succes)
             }
         }
-        catch  _ as WebserviceError {
+        catch  let error as WebserviceError {
             self.mainComponents = nil
-            self.delegate?.updateUI()
+            completionHandler(.Failure(error.description))
+
         }
-        catch _ {
+        catch let error {
             self.mainComponents = nil
-            self.delegate?.updateUI()
+            completionHandler(.Failure(error.localizedDescription))
+            
         }
-        
     }
+    
 }
-
-

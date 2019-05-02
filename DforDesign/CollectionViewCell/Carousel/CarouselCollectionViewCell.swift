@@ -14,7 +14,7 @@ class CarouselCell: UICollectionViewCell {
     
     var currentPage = 0
     var currentPagePostion = 0
-    var presenter: MainViewControllerPresenter! {
+    var presenter: MainViewModel! {
         didSet {
             collectionViewCarousel.reloadData()
             pageControl.numberOfPages = presenter.carouselCount()

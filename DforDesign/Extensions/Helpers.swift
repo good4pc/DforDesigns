@@ -19,6 +19,25 @@ extension CALayer {
 //MARK: UIVIew
 
 extension UIView {
+    func addActivityIndicator() {
+        DispatchQueue.main.async {
+            let activityIndicatore = UIActivityIndicatorView(style: .whiteLarge)
+            activityIndicatore.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            activityIndicatore.center = self.center
+            activityIndicatore.tag = 563
+            self.addSubview(activityIndicatore)
+            activityIndicatore.startAnimating()
+        }
+    }
+    
+    func removeActivityIndicator() {
+        DispatchQueue.main.async {
+            if let activityIndicator = self.viewWithTag(563) {
+                activityIndicator.removeFromSuperview()
+            }
+        }
+    }
+    
     func addUnderLine() {
         self.layoutIfNeeded()
         let layer = CALayer()

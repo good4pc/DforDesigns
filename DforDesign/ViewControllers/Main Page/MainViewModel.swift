@@ -21,24 +21,30 @@ enum CompletionStatus {
         }
     }
 }
+//TODO: - to be removed
+extension MainViewModel {
+    func startAccessCodeBinder() {
+        accessCode.value = "\(drand48())"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+           // self?.accessCode.value = "\(drand48())"
+            self?.startAccessCodeBinder()
+        }
+    }
+}
 
 class MainViewModel: NSObject {
     
     
-    var mainComponents: MainComponenets?
-    let carouselMaximum = 9999
-    let carouselTiming = 3.5
+    var accessCode: Box<String?> = Box(nil)
     
-    //MARK: - Carousel data structures
-    
-    func carouselCount() -> Int {
-        if let mainComponents = mainComponents {
-            return mainComponents.carouselItems.count
-        } else {
-            return 0
-        }
+    override init() {
+        super.init()
+        startAccessCodeBinder()
     }
     
+    var mainComponents: MainComponenets?
+    let carouselTiming = 3.5
+  
     //MARK: challenge
     
     func getNumberOfRowsInMainMenu(in section: Int) -> Int {

@@ -12,7 +12,6 @@
 		8DC3EF3F2270E41000AB7555 /* DforDesign.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF3D2270E41000AB7555 /* DforDesign.xcdatamodeld */; };
 		8DC3EF412270E41200AB7555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF402270E41200AB7555 /* Assets.xcassets */; };
 		8DC3EF442270E41200AB7555 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EF422270E41200AB7555 /* LaunchScreen.storyboard */; };
-		8DC3EF4F2270E41200AB7555 /* DforDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF4E2270E41200AB7555 /* DforDesignTests.swift */; };
 		8DC3EF5A2270E41200AB7555 /* DforDesignUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF592270E41200AB7555 /* DforDesignUITests.swift */; };
 		8DC3EF6D2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF6C2270E5BF00AB7555 /* DForDesignFeedCell.swift */; };
 		8DC3EF6E2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EF6C2270E5BF00AB7555 /* DForDesignFeedCell.swift */; };
@@ -59,6 +58,17 @@
 		8DC3EFC7227B478D00AB7555 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFC5227B478D00AB7555 /* MainViewModel.swift */; };
 		8DC3EFCA227B645300AB7555 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFC9227B645300AB7555 /* Constants.swift */; };
 		8DC3EFCB227B645300AB7555 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFC9227B645300AB7555 /* Constants.swift */; };
+		8DC3EFCD227C755200AB7555 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFCC227C755200AB7555 /* Box.swift */; };
+		8DC3EFCE227C755200AB7555 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFCC227C755200AB7555 /* Box.swift */; };
+		8DC3EFD1227C7F1400AB7555 /* GetStartedCollectionViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD0227C7F1400AB7555 /* GetStartedCollectionViewBase.swift */; };
+		8DC3EFD2227C7F1400AB7555 /* GetStartedCollectionViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD0227C7F1400AB7555 /* GetStartedCollectionViewBase.swift */; };
+		8DC3EFD4227C7F6300AB7555 /* WinnerCellBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD3227C7F6300AB7555 /* WinnerCellBase.swift */; };
+		8DC3EFD5227C7F6300AB7555 /* WinnerCellBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD3227C7F6300AB7555 /* WinnerCellBase.swift */; };
+		8DC3EFD7227C7FDF00AB7555 /* ChallengeCellBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD6227C7FDF00AB7555 /* ChallengeCellBase.swift */; };
+		8DC3EFD8227C7FDF00AB7555 /* ChallengeCellBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD6227C7FDF00AB7555 /* ChallengeCellBase.swift */; };
+		8DC3EFDA227C806100AB7555 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD9227C806100AB7555 /* CarouselViewModel.swift */; };
+		8DC3EFDB227C806100AB7555 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD9227C806100AB7555 /* CarouselViewModel.swift */; };
+		8DC3EFDD227C92A000AB7555 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFDC227C92A000AB7555 /* MainViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +97,6 @@
 		8DC3EF432270E41200AB7555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DC3EF452270E41200AB7555 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC3EF4A2270E41200AB7555 /* DforDesignTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DforDesignTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DC3EF4E2270E41200AB7555 /* DforDesignTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DforDesignTests.swift; sourceTree = "<group>"; };
 		8DC3EF502270E41200AB7555 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC3EF552270E41200AB7555 /* DforDesignUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DforDesignUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC3EF592270E41200AB7555 /* DforDesignUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DforDesignUITests.swift; sourceTree = "<group>"; };
@@ -115,6 +124,12 @@
 		8DC3EFC2227A731B00AB7555 /* GetStartedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCollectionViewCell.swift; sourceTree = "<group>"; };
 		8DC3EFC5227B478D00AB7555 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8DC3EFC9227B645300AB7555 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8DC3EFCC227C755200AB7555 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		8DC3EFD0227C7F1400AB7555 /* GetStartedCollectionViewBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCollectionViewBase.swift; sourceTree = "<group>"; };
+		8DC3EFD3227C7F6300AB7555 /* WinnerCellBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerCellBase.swift; sourceTree = "<group>"; };
+		8DC3EFD6227C7FDF00AB7555 /* ChallengeCellBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCellBase.swift; sourceTree = "<group>"; };
+		8DC3EFD9227C806100AB7555 /* CarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
+		8DC3EFDC227C92A000AB7555 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +180,7 @@
 		8DC3EF352270E41000AB7555 /* DforDesign */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EFCF227C7EBB00AB7555 /* Box */,
 				8DC3EFB92279051300AB7555 /* ViewControllers */,
 				8DC3EFA12273F55C00AB7555 /* Files */,
 				8DC3EF9622728CB300AB7555 /* Model */,
@@ -190,8 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				8DC3EF88227256FB00AB7555 /* Webservice */,
-				8DC3EF4E2270E41200AB7555 /* DforDesignTests.swift */,
 				8DC3EF502270E41200AB7555 /* Info.plist */,
+				8DC3EFDC227C92A000AB7555 /* MainViewModelTests.swift */,
 			);
 			path = DforDesignTests;
 			sourceTree = "<group>";
@@ -241,6 +257,7 @@
 			children = (
 				8DC3EF7A2270F2D800AB7555 /* CarouselCollectionViewCell.swift */,
 				8DC3EF7D227105CA00AB7555 /* CarouselInnerCell.swift */,
+				8DC3EFD9227C806100AB7555 /* CarouselViewModel.swift */,
 			);
 			path = Carousel;
 			sourceTree = "<group>";
@@ -297,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC3EF9E2273F4EB00AB7555 /* ChallengeCell.swift */,
+				8DC3EFD6227C7FDF00AB7555 /* ChallengeCellBase.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -322,6 +340,7 @@
 			children = (
 				8DC3EFAC2277BF5B00AB7555 /* WinnersCollectionViewCell.swift */,
 				8DC3EFAF2277D17000AB7555 /* WinnerCell.swift */,
+				8DC3EFD3227C7F6300AB7555 /* WinnerCellBase.swift */,
 			);
 			path = Winners;
 			sourceTree = "<group>";
@@ -356,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC3EFC2227A731B00AB7555 /* GetStartedCollectionViewCell.swift */,
+				8DC3EFD0227C7F1400AB7555 /* GetStartedCollectionViewBase.swift */,
 			);
 			path = GetStarted;
 			sourceTree = "<group>";
@@ -366,6 +386,14 @@
 				8DC3EFC9227B645300AB7555 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		8DC3EFCF227C7EBB00AB7555 /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EFCC227C755200AB7555 /* Box.swift */,
+			);
+			path = Box;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,13 +535,16 @@
 				8DC3EF902272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EFB32279014700AB7555 /* BaseViewController.swift in Sources */,
 				8DC3EFC3227A731B00AB7555 /* GetStartedCollectionViewCell.swift in Sources */,
+				8DC3EFD4227C7F6300AB7555 /* WinnerCellBase.swift in Sources */,
 				8DC3EF372270E41000AB7555 /* AppDelegate.swift in Sources */,
 				8DC3EF9F2273F4EB00AB7555 /* ChallengeCell.swift in Sources */,
+				8DC3EFDA227C806100AB7555 /* CarouselViewModel.swift in Sources */,
 				8DC3EF832272515700AB7555 /* SearchViewController.swift in Sources */,
 				8DC3EF3F2270E41000AB7555 /* DforDesign.xcdatamodeld in Sources */,
 				8DC3EFAD2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */,
 				8DC3EF7E227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
 				8DC3EFBF227A6A3B00AB7555 /* MenuBarTableViewCell.swift in Sources */,
+				8DC3EFD7227C7FDF00AB7555 /* ChallengeCellBase.swift in Sources */,
 				8DC3EFB72279050200AB7555 /* MenuViewController.swift in Sources */,
 				8DC3EFB02277D17000AB7555 /* WinnerCell.swift in Sources */,
 				8DC3EF6D2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
@@ -523,8 +554,10 @@
 				8DC3EFA32273F56A00AB7555 /* Widgets.swift in Sources */,
 				8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */,
 				8DC3EFC6227B478D00AB7555 /* MainViewModel.swift in Sources */,
+				8DC3EFCD227C755200AB7555 /* Box.swift in Sources */,
 				8DC3EFBB2279057F00AB7555 /* MainViewController.swift in Sources */,
 				8DC3EFCA227B645300AB7555 /* Constants.swift in Sources */,
+				8DC3EFD1227C7F1400AB7555 /* GetStartedCollectionViewBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,21 +569,26 @@
 				8DC3EFB12277D17000AB7555 /* WinnerCell.swift in Sources */,
 				8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */,
 				8DC3EFB42279014700AB7555 /* BaseViewController.swift in Sources */,
+				8DC3EFDB227C806100AB7555 /* CarouselViewModel.swift in Sources */,
 				8DC3EFBC2279057F00AB7555 /* MainViewController.swift in Sources */,
 				8DC3EFCB227B645300AB7555 /* Constants.swift in Sources */,
-				8DC3EF4F2270E41200AB7555 /* DforDesignTests.swift in Sources */,
+				8DC3EFD2227C7F1400AB7555 /* GetStartedCollectionViewBase.swift in Sources */,
+				8DC3EFD5227C7F6300AB7555 /* WinnerCellBase.swift in Sources */,
 				8DC3EFA42273F56A00AB7555 /* Widgets.swift in Sources */,
 				8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
 				8DC3EFAE2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */,
 				8DC3EF6E2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
 				8DC3EF912272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */,
+				8DC3EFDD227C92A000AB7555 /* MainViewModelTests.swift in Sources */,
+				8DC3EFCE227C755200AB7555 /* Box.swift in Sources */,
 				8DC3EF722270E6AE00AB7555 /* Helpers.swift in Sources */,
 				8DC3EFC0227A6A3B00AB7555 /* MenuBarTableViewCell.swift in Sources */,
 				8DC3EFB82279050200AB7555 /* MenuViewController.swift in Sources */,
 				8DC3EFA02273F4EB00AB7555 /* ChallengeCell.swift in Sources */,
 				8DC3EF7F227105CA00AB7555 /* CarouselInnerCell.swift in Sources */,
 				8DC3EFC4227A731B00AB7555 /* GetStartedCollectionViewCell.swift in Sources */,
+				8DC3EFD8227C7FDF00AB7555 /* ChallengeCellBase.swift in Sources */,
 				8DC3EFAA2277A8D100AB7555 /* WinnersHeader.swift in Sources */,
 				8DC3EF87227252C700AB7555 /* WebseriveCaller.swift in Sources */,
 				8DC3EFC7227B478D00AB7555 /* MainViewModel.swift in Sources */,

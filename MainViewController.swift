@@ -20,8 +20,28 @@ fileprivate enum SectionHeight: CGFloat {
     case challenge = 398
 }
 
+class MainViewBase: UIViewController {
+    let collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        
+        
+        //flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        //flowLayout.sectionInsetReference = .fromLayoutMargins
+        
+        //flowLayout.estimatedItemSize = CGSize(width: 200, height: 100)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = UIColor.white
+        collectionView.isPagingEnabled = false
+        collectionView.contentInsetAdjustmentBehavior = .always
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.bounces = true
+        //collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return collectionView
+    }()
+}
 
-class MainViewController: UIViewController {
+class MainViewController: MainViewBase {
     weak var delegate: MenuButtonDelegate?
     fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
     fileprivate let carouselIdentifier = "carouselCellIDentifier"
@@ -31,19 +51,6 @@ class MainViewController: UIViewController {
     fileprivate let getStartedIdentifier = "getStartedIdentifier"
 
     fileprivate var refreshController = UIRefreshControl()
-    
-    let collectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .vertical
-        //flowLayout.estimatedItemSize = CGSize(width: 200, height: 100)
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = UIColor.white
-        collectionView.isPagingEnabled = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.bounces = true
-        return collectionView
-    }()
-    
     
     var viewModel = MainViewModel()
 
@@ -55,6 +62,9 @@ class MainViewController: UIViewController {
         addNavigationMenuButton()
         loadData()
 
+        viewModel.accessCode.bind { (value) in
+           // print("value changed")
+        }
     }
     //MARK: Loading data from service
     
@@ -64,7 +74,6 @@ class MainViewController: UIViewController {
             self.view.removeActivityIndicator()
             switch status {
             case .Succes:
-                print("success")
                 DispatchQueue.main.async {
                      self.collectionView.reloadData()
                 }
@@ -111,7 +120,7 @@ class MainViewController: UIViewController {
     
     fileprivate func initializeCollectionView() {
         self.view.addSubview(collectionView)
-        collectionView.frame = self.view.frame
+        collectionView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         collectionView.register(DForDesignFeedCell.self, forCellWithReuseIdentifier: cellIdentifierForFeed)
         collectionView.register(CarouselCell.self, forCellWithReuseIdentifier: carouselIdentifier)
         collectionView.register(ChallengeCell.self, forCellWithReuseIdentifier: challengeIdentifier)
@@ -206,7 +215,22 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         else if indexPath.section == Section.challengeSection1.rawValue {
           
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
+         
+        /*    let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+            let referenceHeight: CGFloat = 100 // Approximate height of your cell
+            let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+                - sectionInset.left
+                - sectionInset.right
+                - collectionView.contentInset.left
+                - collectionView.contentInset.right
+            print(referenceWidth)
+            print(referenceHeight)
+
+            return CGSize(width: referenceWidth, height: referenceHeight)
+*/
+            
+            
+               let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
             cell.contentView.layoutIfNeeded()
             //Y coordinates fecteched from the UI widgets are not showing the exact values that we provided.So manually calculated and added the y cordinates.
             var heightCalculated: CGFloat = 25.0
@@ -223,7 +247,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
            // print(cell.contentView.subviews)
           //  print("height calculated ---> ", heightCalculated)
-            return CGSize(width: self.view.frame.width, height: heightCalculated)
+        return CGSize(width: self.view.frame.width, height: heightCalculated)
         }/* else if indexPath.section == Section.challengeSection2.rawValue {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
             cell.contentView.layoutIfNeeded()

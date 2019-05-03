@@ -10,7 +10,9 @@ import UIKit
 fileprivate enum Section: Int{
     case carousel = 0
     case challengeSection1 = 1
-    case challengeSection2 = 2
+   // case challengeSection2 = 2
+    case winners = 2
+    case getStarted = 3
 }
 
 fileprivate enum SectionHeight: CGFloat {
@@ -18,37 +20,80 @@ fileprivate enum SectionHeight: CGFloat {
     case challenge = 398
 }
 
-
-class MainViewController: UIViewController, PresenterDelegate {
-    
-    fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
-    fileprivate let carouselIdentifier = "carouselCellIDentifier"
-    fileprivate let challengeIdentifier = "challengeIdentifier"
-     fileprivate let winnerHeaderIDentifier = "winnerHeaderIdentifier"
-    
-    fileprivate var refreshController = UIRefreshControl()
+class MainViewBase: UIViewController {
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
+        
+        
+        //flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        //flowLayout.sectionInsetReference = .fromLayoutMargins
+        
         //flowLayout.estimatedItemSize = CGSize(width: 200, height: 100)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = UIColor.white
         collectionView.isPagingEnabled = false
+        collectionView.contentInsetAdjustmentBehavior = .always
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.bounces = true
+        //collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return collectionView
     }()
+}
+
+class MainViewController: MainViewBase {
+    weak var delegate: MenuButtonDelegate?
+    fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
+    fileprivate let carouselIdentifier = "carouselCellIDentifier"
+    fileprivate let challengeIdentifier = "challengeIdentifier"
+    fileprivate let winnerHeaderIDentifier = "winnerHeaderIdentifier"
+    fileprivate let winnersCollectionViewCellIdentifier = "winnersCollectionViewCellIdentifier"
+    fileprivate let getStartedIdentifier = "getStartedIdentifier"
+
+    fileprivate var refreshController = UIRefreshControl()
     
-    var presenter: MainViewControllerPresenter!
-    
+    var viewModel = MainViewModel()
+
     override func viewDidLoad() {
         self.title = "DForDesign"
         initializeCollectionView()
         initializeSearchButtonOnNavigationBar()
-        presenter = MainViewControllerPresenter()
-        presenter.delegate = self
-        callInitialData()
         addRefreshController()
+        addNavigationMenuButton()
+        loadData()
+
+        viewModel.accessCode.bind { (value) in
+           // print("value changed")
+        }
+    }
+    //MARK: Loading data from service
+    
+    func loadData() {
+        self.view.addActivityIndicator()
+        viewModel.initialize { (status) in
+            self.view.removeActivityIndicator()
+            switch status {
+            case .Succes:
+                DispatchQueue.main.async {
+                     self.collectionView.reloadData()
+                }
+               
+            case .Failure(let errorDescription):
+                //TODO: Add alert controller here
+                print(errorDescription)
+                break
+            }
+        }
+    }
+    
+  
+    private func addNavigationMenuButton() {
+        let menuButton = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(showMenuBar))
+        self.navigationItem.leftBarButtonItem = menuButton
+    }
+    
+    @objc func showMenuBar() {
+        delegate?.toggleMenuBar()
     }
     
     //MARK: - Refresh controller
@@ -56,17 +101,12 @@ class MainViewController: UIViewController, PresenterDelegate {
     private func addRefreshController() {
         collectionView.addSubview(refreshController)
         refreshController.addTarget(self, action: #selector(refreshContents), for: .valueChanged)
-        
     }
     
     @objc func refreshContents() {
-        callInitialData()
+       // callInitialData()
+        loadData()
         refreshController.endRefreshing()
-    }
-    
-    private func callInitialData() {
-        
-        presenter.getMainData()
     }
     
     fileprivate func initializeSearchButtonOnNavigationBar() {
@@ -80,12 +120,17 @@ class MainViewController: UIViewController, PresenterDelegate {
     
     fileprivate func initializeCollectionView() {
         self.view.addSubview(collectionView)
-        collectionView.frame = self.view.frame
+        collectionView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         collectionView.register(DForDesignFeedCell.self, forCellWithReuseIdentifier: cellIdentifierForFeed)
         collectionView.register(CarouselCell.self, forCellWithReuseIdentifier: carouselIdentifier)
         collectionView.register(ChallengeCell.self, forCellWithReuseIdentifier: challengeIdentifier)
         
         collectionView.register(WinnerHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: winnerHeaderIDentifier)
+        
+        collectionView.register(WinnersCollectionViewCell.self, forCellWithReuseIdentifier: winnersCollectionViewCellIdentifier)
+        
+         collectionView.register(GetStartedCollectionViewCell.self, forCellWithReuseIdentifier: getStartedIdentifier)
+
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -109,7 +154,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return presenter.getNumberOfRowsInMainMenu(in: section)
+        return viewModel.getNumberOfRowsInMainMenu(in: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -119,7 +164,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 3 {
+        if section == 2 {
             return CGSize(width: self.view.bounds.width, height: 80)
         } else {
             return CGSize.zero
@@ -132,38 +177,78 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch indexPath.section {
         case Section.carousel.rawValue:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselIdentifier, for: indexPath) as! CarouselCell
-            cell.presenter = presenter
+            cell.presenter = viewModel
             return cell
             
         case Section.challengeSection1.rawValue:
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
-            if let mainComponent = presenter.mainComponents {
+            if let mainComponent = viewModel.mainComponents {
                 cell.challenge = mainComponent.challenge
             }
             return cell
             
-        case Section.challengeSection2.rawValue:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
-            if let mainComponent = presenter.mainComponents {
-                cell.challenge = mainComponent.challenge
-            }
+//        case Section.challengeSection2.rawValue:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
+//            if let mainComponent = presenter.mainComponents {
+//                cell.challenge = mainComponent.challenge
+//            }
+//            return cell
+            
+        case Section.getStarted.rawValue:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: getStartedIdentifier, for: indexPath) as! GetStartedCollectionViewCell
             return cell
             
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath) as! DForDesignFeedCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: winnersCollectionViewCellIdentifier, for: indexPath) as! WinnersCollectionViewCell
+            if let mainComponent = viewModel.mainComponents {
+                cell.winners = mainComponent.winners
+            }
             return cell
             
         }
         
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == Section.carousel.rawValue {
             return CGSize(width: self.view.frame.size.width, height: SectionHeight.carousel.rawValue)
         }
         else if indexPath.section == Section.challengeSection1.rawValue {
+          
+         
+        /*    let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+            let referenceHeight: CGFloat = 100 // Approximate height of your cell
+            let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+                - sectionInset.left
+                - sectionInset.right
+                - collectionView.contentInset.left
+                - collectionView.contentInset.right
+            print(referenceWidth)
+            print(referenceHeight)
+
+            return CGSize(width: referenceWidth, height: referenceHeight)
+*/
             
+            
+               let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
+            cell.contentView.layoutIfNeeded()
+            //Y coordinates fecteched from the UI widgets are not showing the exact values that we provided.So manually calculated and added the y cordinates.
+            var heightCalculated: CGFloat = 25.0
+            
+            for view in cell.contentView.subviews {
+                heightCalculated = heightCalculated + view.bounds.size.height
+            }
+            
+            if let mainComponent = viewModel.mainComponents {
+                
+                heightCalculated = heightCalculated + mainComponent.challenge.heading.height(constraintedWidth: self.view.bounds.width, font: UIFont.boldSystemFont(ofSize: 18))
+                heightCalculated = heightCalculated + mainComponent.challenge.description.height(constraintedWidth: self.view.bounds.width, font: UIFont.systemFont(ofSize: 15))
+                
+            }
+           // print(cell.contentView.subviews)
+          //  print("height calculated ---> ", heightCalculated)
+        return CGSize(width: self.view.frame.width, height: heightCalculated)
+        }/* else if indexPath.section == Section.challengeSection2.rawValue {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
             cell.contentView.layoutIfNeeded()
             //Y coordinates fecteched from the UI widgets are not showing the exact values that we provided.So manually calculated and added the y cordinates.
@@ -180,27 +265,13 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
             }
             return CGSize(width: self.view.frame.width, height: heightCalculated)
-        } else if indexPath.section == Section.challengeSection2.rawValue {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
-            cell.contentView.layoutIfNeeded()
-            //Y coordinates fecteched from the UI widgets are not showing the exact values that we provided.So manually calculated and added the y cordinates.
-            var heightCalculated: CGFloat = 25.0
-            
-            for view in cell.contentView.subviews {
-                heightCalculated = heightCalculated + view.bounds.size.height
-            }
-            
-            if let mainComponent = presenter.mainComponents {
-                
-                heightCalculated = heightCalculated + mainComponent.challenge.heading.height(constraintedWidth: self.view.bounds.width, font: UIFont.boldSystemFont(ofSize: 18))
-                heightCalculated = heightCalculated + mainComponent.challenge.description.height(constraintedWidth: self.view.bounds.width, font: UIFont.systemFont(ofSize: 15))
-                
-            }
-            return CGSize(width: self.view.frame.width, height: heightCalculated)
+        }*/
+        else if indexPath.section == Section.getStarted.rawValue {
+            return CGSize(width: self.view.frame.width, height: 240 )
         }
         
         
-        return CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        return CGSize(width: self.view.frame.width, height: 350 )
     }
     
     

@@ -10,18 +10,6 @@ import UIKit
 
 fileprivate let carouselCellIDentifier = "CarouselCellIdentifier"
 class CarouselCell: UICollectionViewCell {
-    
-    
-    var currentPage = 0
-    var currentPagePostion = 0
-    var presenter: MainViewControllerPresenter! {
-        didSet {
-            collectionViewCarousel.reloadData()
-            pageControl.numberOfPages = presenter.carouselCount()
-            
-        }
-    }
-    
     let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = UIColor.lightGray
@@ -42,6 +30,19 @@ class CarouselCell: UICollectionViewCell {
         return collectionView
     }()
     
+    
+    var currentPage = 0
+    var currentPagePostion = 0
+    var viewModel = CarouselViewModel()
+    var presenter: MainViewModel! {
+        didSet {
+            viewModel.initialize(with: presenter)
+            collectionViewCarousel.reloadData()
+            pageControl.numberOfPages = viewModel.carouselCount()
+            
+        }
+    }
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.gray
@@ -53,7 +54,6 @@ class CarouselCell: UICollectionViewCell {
         self.addSubview(collectionViewCarousel)
         collectionViewCarousel.frame = self.frame
         collectionViewCarousel.register(CarouselInnerCell.self, forCellWithReuseIdentifier: carouselCellIDentifier)
-        
         collectionViewCarousel.delegate = self
         collectionViewCarousel.dataSource = self
         self.addSubview(pageControl)
@@ -73,14 +73,14 @@ class CarouselCell: UICollectionViewCell {
     }
     
     private func movePage() {
-        if currentPage == presenter.carouselMaximum - 1 {
+        if currentPage == viewModel.carouselMaximum - 1 {
             currentPage = 0
             currentPagePostion = 0
             let scrollTo = CGPoint(x: 0, y: 0)
             collectionViewCarousel.setContentOffset(scrollTo, animated: false)
             
         } else {
-            if self.currentPage == presenter.carouselCount() - 1 {
+            if self.currentPage == viewModel.carouselCount() - 1 {
                 self.pageControl.currentPage = 0
                 currentPagePostion = 0
             } else
@@ -107,12 +107,12 @@ extension CarouselCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.carouselCount() == 0 ? 0: presenter.carouselMaximum
+        return viewModel.carouselCount() == 0 ? 0: viewModel.carouselMaximum
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselCellIDentifier, for: indexPath) as! CarouselInnerCell
-        let position = indexPath.row % presenter.carouselCount()
+        let position = indexPath.row % viewModel.carouselCount()
         cell.itemDetails = presenter.mainComponents?.carouselItems[position]
         return cell
     }
@@ -125,9 +125,9 @@ extension CarouselCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageWidth = collectionViewCarousel.frame.size.width
         let page = Int(collectionViewCarousel.contentOffset.x / pageWidth)
-        pageControl.currentPage = page % presenter.carouselCount()
+        pageControl.currentPage = page % viewModel.carouselCount()
         currentPage = page
-        currentPagePostion = page % presenter.carouselCount()
+        currentPagePostion = page % viewModel.carouselCount()
     }
 }
 

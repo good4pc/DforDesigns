@@ -1,9 +1,9 @@
 {
     "carouselItems": [
-        {"imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiuSZNSTgykfjYwWHRasiZ-i77rzgqOUNm8rxu-_O4Q4MaLTbC",
+        {"imageUrl":"https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBQheZ9.img?h=351&w=624&m=6&q=60&o=f&l=f&x=627&y=238",
             "itemUrl":"item1"
         },
-        {"imageUrl":"https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?cs=srgb&dl=beautiful-beautiful-flowers-bright-1133957.jpg&fm=jpg",
+        {"imageUrl":"https://i.udemycdn.com/course/750x422/1895804_09bf_2.jpg",
             "itemUrl":"item2"
         },
         {"imageUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jasminum_officinale.JPG/1200px-Jasminum_officinale.JPG",
@@ -13,7 +13,41 @@
     "challenge": {
         "heading": "PARTICIPATE",
         "description" : "Unleash your creativity! Submit a design to our open challenges. Or are you a connoisseur of fashion? Spot designs that you love - vote for them, or pre-order to make them your own!",
-        "imageUrl": "https://s3.amazonaws.com/tinycards/image/5d06c36cc3a9d6821e1a5eeb7c0fe423"
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEfzP1hjx94wAQwHUxLCmPUokIBTQKwz95P0Qz6VA-Esa3xP7m"
     },
-    "string": "Hello World"
+    "string": "Hello World",
+    "winners": [
+        {
+            "title": "Most liked",
+            "itemImageURl":"https://ik.imagekit.io/ldqsn9vvwgg/images/1560477.jpg",
+             "userProfileImage":"https://images.unsplash.com/photo-1533075377664-f5c0cbc5a91c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+             "userName": "good4pc",
+             "comments": "225",
+             "Likes": "65"
+        },
+        {
+            "title": "Winner",
+            "itemImageURl":"https://ik.imagekit.io/ldqsn9vvwgg/images/1523881.jpg",
+            "userProfileImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoHyM8BRtz2QPNzaoDmtm83f7OFPrtJZucyif2R10I4_Wm8L8C",
+            "userName": "Daewoo",
+            "comments": "565",
+            "Likes": "55"
+        },
+        {
+            "title": "Winner",
+            "itemImageURl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYhavMBvWckgo7ITdRX-wHE_yCw3jr6gIPZgY2n-B7VPXyMuC_",
+            "userProfileImage":"https://cdn.evbuc.com/eventlogos/92542003/portrait.jpg",
+            "userName": "Sam",
+            "comments": "565",
+            "Likes": "55"
+        },
+        {
+            "title": "Popular",
+            "itemImageURl":"https://cdn.a1designerwear.com/content/images/thumbs/0523513_ideal-light-green-cotton-salwar-kameez.jpeg",
+            "userProfileImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSD3B2NSyicKjSIUMo7r5kj5HGsoPzYn80WJe5k3drodZv1aA7Dw",
+            "userName": "Sind",
+            "comments": "56",
+            "Likes": "35"
+        }
+    ]
 }

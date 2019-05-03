@@ -70,7 +70,7 @@ class ChallengeCell: ChallengeCellBase {
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":descriptionLabel]))
         
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":imageView]))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateButton]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[V0]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateButton]))
                 
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[V0]-5-[desc]-5-[img(200)]-5-[button(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateLabel,"desc": descriptionLabel,"img":imageView,"button": participateButton]))
     }

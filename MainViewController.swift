@@ -214,21 +214,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: self.view.frame.size.width, height: SectionHeight.carousel.rawValue)
         }
         else if indexPath.section == Section.challengeSection1.rawValue {
-          
-         
-        /*    let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
-            let referenceHeight: CGFloat = 100 // Approximate height of your cell
-            let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
-                - sectionInset.left
-                - sectionInset.right
-                - collectionView.contentInset.left
-                - collectionView.contentInset.right
-            print(referenceWidth)
-            print(referenceHeight)
-
-            return CGSize(width: referenceWidth, height: referenceHeight)
-*/
-            
             
                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
             cell.contentView.layoutIfNeeded()
@@ -245,27 +230,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 heightCalculated = heightCalculated + mainComponent.challenge.description.height(constraintedWidth: self.view.bounds.width, font: UIFont.systemFont(ofSize: 15))
                 
             }
-           // print(cell.contentView.subviews)
-          //  print("height calculated ---> ", heightCalculated)
         return CGSize(width: self.view.frame.width, height: heightCalculated)
-        }/* else if indexPath.section == Section.challengeSection2.rawValue {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: challengeIdentifier, for: indexPath) as! ChallengeCell
-            cell.contentView.layoutIfNeeded()
-            //Y coordinates fecteched from the UI widgets are not showing the exact values that we provided.So manually calculated and added the y cordinates.
-            var heightCalculated: CGFloat = 25.0
-            
-            for view in cell.contentView.subviews {
-                heightCalculated = heightCalculated + view.bounds.size.height
-            }
-            
-            if let mainComponent = presenter.mainComponents {
-                
-                heightCalculated = heightCalculated + mainComponent.challenge.heading.height(constraintedWidth: self.view.bounds.width, font: UIFont.boldSystemFont(ofSize: 18))
-                heightCalculated = heightCalculated + mainComponent.challenge.description.height(constraintedWidth: self.view.bounds.width, font: UIFont.systemFont(ofSize: 15))
-                
-            }
-            return CGSize(width: self.view.frame.width, height: heightCalculated)
-        }*/
+        }
         else if indexPath.section == Section.getStarted.rawValue {
             return CGSize(width: self.view.frame.width, height: 240 )
         }

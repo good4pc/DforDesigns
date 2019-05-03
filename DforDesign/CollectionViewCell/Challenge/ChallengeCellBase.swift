@@ -40,8 +40,9 @@ class ChallengeCellBase: UICollectionViewCell {
         button.setTitleColor(UIColor.darkGray, for: .normal)
         button.setTitle("PARTICIPATE", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
-        button.layer.borderColor = UIColor.lightGray.cgColor
-        button.layer.borderWidth = 1.0
+        button.backgroundColor = UIColor.lightGray
+        //button.layer.borderColor = UIColor.lightGray.cgColor
+       // button.layer.borderWidth = 1.0
         button.layer.cornerRadius = 8.0
         return button
     }()

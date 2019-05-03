@@ -12,6 +12,7 @@ struct MainComponenets: Decodable {
     var carouselItems: [Item]
     var string: String
     var challenge: Challenge
+    var winners: [Winner]
 }
 
 
@@ -40,5 +41,30 @@ struct Challenge: Decodable {
             return
         }
         imageDownloaded = data
+    }
+}
+
+struct Winner: Decodable {
+    var title: String
+    var itemImageURl: String
+    var userProfileImage: String
+    var userName: String
+    var comments: String
+    var Likes: String
+    var profileImageDownloaded: Data?
+    var itemImageDownloaded: Data?
+
+    mutating func updateItemImage(with data: Data?) {
+        guard let data = data else {
+            return
+        }
+        itemImageDownloaded = data
+    }
+    
+    mutating func updateProfileImage(with data: Data?) {
+        guard let data = data else {
+            return
+        }
+        profileImageDownloaded = data
     }
 }

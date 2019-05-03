@@ -8,10 +8,15 @@
 
 import UIKit
 
-class Widgets {
-    let participateLabel : UILabel = {
+private class Widgets {
+ 
+    let getStartedLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 70)
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.text = "Get Started"
         return label
     }()
     
@@ -31,9 +36,37 @@ class Widgets {
         return imageView
     }()
     
-    let participateButton: UIButton = {
+    let browseChallenges: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Browse Challenges", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.layer.cornerRadius = 8.0
+        button.backgroundColor = UIColor(red: 228/256, green: 51/256, blue: 114/256, alpha: 1.0)
         return button
     }()
+    
+    let contentsView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 1.0
+        return view
+    }()
+    
+    func addABorderOnLeft() {
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: 1, height: 10)
+       // self.view.layer.addSublayer(layer)
+        layer.backgroundColor = UIColor.lightGray.cgColor
+    }
+    
+    /**
+ 
+     self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": imageView]))
+     
+     self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": imageView]))
+     
+ **/
 }

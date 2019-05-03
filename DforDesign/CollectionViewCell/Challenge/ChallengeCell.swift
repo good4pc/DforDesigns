@@ -8,53 +8,10 @@
 
 import UIKit
 
-class ChallengeCell: UICollectionViewCell {
+
+class ChallengeCell: ChallengeCellBase {
     
-    let participateLabel : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = UIColor.lightGray
-        return label
-    }()
-    
-    let descriptionLabel : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.numberOfLines = 0
-        label.textColor = UIColor.lightGray
-        return label
-    }()
-    
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    let participateButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.darkGray, for: .normal)
-        button.setTitle("PARTICIPATE", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
-        button.layer.borderColor = UIColor.lightGray.cgColor
-        button.layer.borderWidth = 1.0
-        button.layer.cornerRadius = 8.0
-        return button
-    }()
-    
-    let baseView: UIView = {
-        let view = UIView()
-        view.tag = 334
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
+  
     var heightOfCell: CGFloat = 0.0
     
     var challenge: Challenge! {
@@ -66,7 +23,13 @@ class ChallengeCell: UICollectionViewCell {
             }
         }
     }
-    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+         participateLabel.preferredMaxLayoutWidth = layoutAttributes.size.width - contentView.layoutMargins.left - contentView.layoutMargins.left
+         descriptionLabel.preferredMaxLayoutWidth = layoutAttributes.size.width - contentView.layoutMargins.left - contentView.layoutMargins.left
+        print(systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height)
+        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        return layoutAttributes
+    }
     /*
      override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
      setNeedsLayout()
@@ -108,10 +71,7 @@ class ChallengeCell: UICollectionViewCell {
         
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":imageView]))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateButton]))
-        
-        // participateButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        //participateButton.centerXAnchor.constraint(equalToSystemSpacingAfter: self.contentView.centerXAnchor, multiplier: 0).isActive = true
-        
+                
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[V0]-5-[desc]-5-[img(200)]-5-[button(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":participateLabel,"desc": descriptionLabel,"img":imageView,"button": participateButton]))
     }
     

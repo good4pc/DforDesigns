@@ -195,16 +195,9 @@
 			children = (
 				8DC3EFCF227C7EBB00AB7555 /* Box */,
 				8DC3EFB92279051300AB7555 /* ViewControllers */,
-				8DC3EFA12273F55C00AB7555 /* Files */,
 				8DC3EF9622728CB300AB7555 /* Model */,
-				8DC3EF92227272A900AB7555 /* JsonFiles */,
 				8DC3EF8B227259D700AB7555 /* Helper */,
 				8DC3EF842272527B00AB7555 /* Webservice */,
-				8DC3EF812272513200AB7555 /* Search */,
-				8DC3EF6F2270E69F00AB7555 /* Extensions */,
-				8DC3EFA72277A88E00AB7555 /* CollectionViewHeaders */,
-				8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */,
-				8DC3EFBD227A6A1800AB7555 /* TableViewCell */,
 				8DC3EF362270E41000AB7555 /* AppDelegate.swift */,
 				8DC3EF3A2270E41000AB7555 /* Main.storyboard */,
 				8DC3EF402270E41200AB7555 /* Assets.xcassets */,
@@ -302,6 +295,9 @@
 		8DC3EF8B227259D700AB7555 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EFA12273F55C00AB7555 /* Files */,
+				8DC3EF6F2270E69F00AB7555 /* Extensions */,
+				8DC3EF92227272A900AB7555 /* JsonFiles */,
 				8DC3EF8F2272610700AB7555 /* DataTranslator.swift */,
 			);
 			path = Helper;
@@ -371,6 +367,10 @@
 		8DC3EFB92279051300AB7555 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EF812272513200AB7555 /* Search */,
+				8DC3EFA72277A88E00AB7555 /* CollectionViewHeaders */,
+				8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */,
+				8DC3EFBD227A6A1800AB7555 /* TableViewCell */,
 				8DC3EFDF227CA98C00AB7555 /* SearchViewController */,
 				8DC3EFC8227B644400AB7555 /* Constants */,
 				8DC3EF672270E4DE00AB7555 /* Main Page */,

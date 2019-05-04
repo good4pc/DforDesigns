@@ -65,13 +65,9 @@ class MainViewController: MainViewBase, SearchButtonDelegate {
         addRefreshController()
         addNavigationMenuButton()
         loadData()
-        viewModel.accessCode.bind { (value) in
-           // print("value changed")
-        }
-        
-        
-    
-        
+//        viewModel.accessCode.bind { (value) in
+//           // print("value changed")
+//        }
     }
     //MARK: Loading data from service
     
@@ -141,40 +137,7 @@ class MainViewController: MainViewBase, SearchButtonDelegate {
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             viewForSearchView.view.frame.origin.x = 0.0
         }, completion: nil)
-     /*   let viewForSearching = searchVc.addSearchBar()
-        self.view.window?.addSubview(viewForSearching)
-        
-        let topAnchor = self.navigationController?.navigationBar.frame.origin.y ?? 0.0
-        print(topAnchor)
-        self.view.window?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": viewForSearching]))
-         self.view.window?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-topAnchor-[V0]", options: NSLayoutConstraint.FormatOptions(), metrics: ["topAnchor": topAnchor], views: ["V0": viewForSearching]))
-        
-        
-        searchVc.viewModel = viewModel
-        searchVc.setFrame(rect: self.navigationController?.navigationBar.frame ?? CGRect.zero)
-        
-        if searchVc.delegate == nil
-        {
-              searchVc.delegate = self
-        }
-        
-        
-      //  searchVc.addTableView(into: self.view)
-        if searchVc.toggleView == false {
-            viewForSearching.frame.origin.x = self.view.frame.size.width
-            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-                viewForSearching.frame.origin.x = 0.0
-            }, completion: nil)
-        }
-        else{
-            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-                viewForSearching.frame.origin.x = self.view.frame.size.width
-            }, completion: nil)
-        }
-        searchVc.toggleView = !searchVc.toggleView
-        
-        
-        */
+ 
     }
     
     fileprivate func initializeCollectionView() {

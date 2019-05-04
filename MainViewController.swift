@@ -21,6 +21,9 @@ fileprivate enum SectionHeight: CGFloat {
 }
 
 class MainViewBase: UIViewController {
+    
+  
+    
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -41,7 +44,7 @@ class MainViewBase: UIViewController {
     }()
 }
 
-class MainViewController: MainViewBase {
+class MainViewController: MainViewBase, SearchButtonDelegate {
     weak var delegate: MenuButtonDelegate?
     fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
     fileprivate let carouselIdentifier = "carouselCellIDentifier"
@@ -53,7 +56,8 @@ class MainViewController: MainViewBase {
     fileprivate var refreshController = UIRefreshControl()
     
     var viewModel = MainViewModel()
-
+    lazy var searchVc = SearchView()
+    
     override func viewDidLoad() {
         self.title = "DForDesign"
         initializeCollectionView()
@@ -61,10 +65,13 @@ class MainViewController: MainViewBase {
         addRefreshController()
         addNavigationMenuButton()
         loadData()
-
         viewModel.accessCode.bind { (value) in
            // print("value changed")
         }
+        
+        
+    
+        
     }
     //MARK: Loading data from service
     
@@ -114,8 +121,60 @@ class MainViewController: MainViewBase {
         self.navigationItem.rightBarButtonItem = searChBarButton
     }
     
+    //MARK: - Search ButtonClicked
+    
+    func cancelButtonPressed() {
+        searchButtonClicked()
+    }
+    
     @objc func searchButtonClicked() {
-        self.performSegue(withIdentifier: "SearchViewController", sender: self)
+        //self.performSegue(withIdentifier: "SearchViewController", sender: self)
+        
+        let viewForSearchView = SearchView()
+        self.view.window!.addSubview(viewForSearchView.view)
+        viewForSearchView.viewModel = viewModel
+        viewForSearchView.bindData()
+        addChild(viewForSearchView)
+        viewForSearchView.didMove(toParent: self)
+        viewForSearchView.view.frame.origin.x = self.view.frame.size.width
+        viewForSearchView.view.frame.origin.y = self.navigationController?.navigationBar.frame.origin.y ?? 0.0
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            viewForSearchView.view.frame.origin.x = 0.0
+        }, completion: nil)
+     /*   let viewForSearching = searchVc.addSearchBar()
+        self.view.window?.addSubview(viewForSearching)
+        
+        let topAnchor = self.navigationController?.navigationBar.frame.origin.y ?? 0.0
+        print(topAnchor)
+        self.view.window?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": viewForSearching]))
+         self.view.window?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-topAnchor-[V0]", options: NSLayoutConstraint.FormatOptions(), metrics: ["topAnchor": topAnchor], views: ["V0": viewForSearching]))
+        
+        
+        searchVc.viewModel = viewModel
+        searchVc.setFrame(rect: self.navigationController?.navigationBar.frame ?? CGRect.zero)
+        
+        if searchVc.delegate == nil
+        {
+              searchVc.delegate = self
+        }
+        
+        
+      //  searchVc.addTableView(into: self.view)
+        if searchVc.toggleView == false {
+            viewForSearching.frame.origin.x = self.view.frame.size.width
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+                viewForSearching.frame.origin.x = 0.0
+            }, completion: nil)
+        }
+        else{
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+                viewForSearching.frame.origin.x = self.view.frame.size.width
+            }, completion: nil)
+        }
+        searchVc.toggleView = !searchVc.toggleView
+        
+        
+        */
     }
     
     fileprivate func initializeCollectionView() {
@@ -242,5 +301,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
 }
+
+
 
 

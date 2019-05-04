@@ -31,15 +31,21 @@ extension MainViewModel {
         }
     }
 }
+//TODO: - Move
+struct SearchResult {
+    var name: String
+    var id: Int
+}
 
 class MainViewModel: NSObject {
     
     
     var accessCode: Box<String?> = Box(nil)
+    var searchResults: Box<[SearchResult]?> = Box(nil)
     
     override init() {
         super.init()
-        startAccessCodeBinder()
+       // startAccessCodeBinder()
     }
     
     var mainComponents: MainComponenets?

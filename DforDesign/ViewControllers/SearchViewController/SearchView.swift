@@ -19,6 +19,7 @@ class SearchView: UIViewController {
     var toggleView = false
     private let tableViewIdentifier = "searchTableViewIDentifier"
     var viewModel: MainViewModel?
+    var searchViewModel = SearchViewModel()
     
     let cancelButton : UIButton = {
         let button = UIButton()
@@ -46,97 +47,144 @@ class SearchView: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.masksToBounds = true
+        tableView.contentInsetAdjustmentBehavior = .never
         return tableView
     }()
-   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.view.addSubview(searchTextField)
+    
+    let baseViewForSearch: UIView =  {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
+    let closeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(#imageLiteral(resourceName: "searchClose"), for: .normal)
+        return button
+    }()
+    
+    
+    fileprivate func addViews() {
+        self.view.addSubview(baseViewForSearch)
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": baseViewForSearch]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[V0(40)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": baseViewForSearch]))
+        
+        baseViewForSearch.addSubview(searchTextField)
         searchTextField.delegate = self
         
-        self.view.addSubview(cancelButton)
+        baseViewForSearch.addSubview(cancelButton)
+        baseViewForSearch.addSubview(closeButton)
+        closeButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        closeButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        closeButton.trailingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: -5).isActive = true
+        closeButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor, constant: 0).isActive = true
+        
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         self.view.addSubview(tableView)
+        
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: tableViewIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[V0]-5-[cancelButton(50)]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": searchTextField,"cancelButton":cancelButton]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[V0(40)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": cancelButton]))
+        baseViewForSearch.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[V0]-5-[cancelButton(50)]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": searchTextField,"cancelButton":cancelButton]))
+        
+        baseViewForSearch.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[V0]-5-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": cancelButton]))
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": tableView]))
         
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[V1(40)]-5-[V0(200)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V1": searchTextField,"V0": tableView]))
+        baseViewForSearch.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[V1]-5-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V1": searchTextField]))
+        
+        tableView.topAnchor.constraint(equalTo: baseViewForSearch.bottomAnchor, constant: 0).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
         tableView.isHidden = true
-        
-        
-       
-    }
-    
-    func bindData() {
-        viewModel?.searchResults.bind { [weak self] (searchResults)  in
-            guard let searchResults = searchResults else {
-                return
-            }
-            if searchResults.count == 0 {
-                self?.tableView.reloadData()
-                self?.tableView.isHidden = true
-            } else {
-                self?.tableView.isHidden = false
-                self?.tableView.reloadData()
-            }
-        }
     }
 
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .clear
+        addViews()
+    }
+    
     @objc func cancelButtonPressed() {
+        searchTextField.text = nil
+        searchTextField.resignFirstResponder()
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             self.view.frame.origin.x = self.view.frame.size.width
         }, completion: nil)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchTextField.resignFirstResponder()
+        if self.view.frame.origin.x == 0 {
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+                self.view.frame.origin.x = self.view.frame.size.width
+            }, completion: nil)
+        }
+    }
+    //MARK: - Searching Method
+    func searchUser(with searchText: String) {
+        searchViewModel.search(with: searchText) { (status) in
+            
+            DispatchQueue.main.async {
+                switch status {
+                case .Succes:
+                    self.tableView.isHidden = false
+                    self.tableView.reloadData()
+                case .Failure(let error):
+                    print(error.description)
+                    self.tableView.isHidden = true
+                }
+            }
+        }
+    }
 }
+
+//MARK: - Text field delegate
+
 extension SearchView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print(string)
         
         if range.length == 1 && textField.text?.count == 1 {
             textField.text = nil
             viewModel?.searchResults.value = []
+            self.tableView.isHidden = true
             textField.resignFirstResponder()
+            return true
         }
         
-        if textField.text!.count > 0 {
-            //TODO: update search results to model
-            if let viewModel = viewModel {
-                let searchResult = SearchResult(name: "pc", id: 65)
-                viewModel.searchResults.value = [searchResult]
-            }
-           
-            //tableView.reloadData()
+        guard let searchString = textField.text else {
+            return true
         }
+        
+        searchUser(with: searchString)
         return true
     }
 }
 
+//MARK: - TableView delegate
+
 extension SearchView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return searchViewModel.tablViewCount()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewIdentifier, for: indexPath)
-        cell.textLabel?.text = "pc"
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewIdentifier, for: indexPath) as! SearchTableViewCell
+       // cell.textLabel?.text = searchViewModel.nameToDisplay(at: indexPath.row)
+        //cell.textLabel?.textAlignment = .center
+        cell.searchResult = searchViewModel.search?.searchResult[indexPath.row]
         return cell
     }
-   
+    
 }
 
-class SearchTableViewCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+

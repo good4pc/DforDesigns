@@ -9,3 +9,4 @@
 import Foundation
 
 var baseUrl = "https://www.google.ca/"
+var searchingURl = "https://www.google.ca/"

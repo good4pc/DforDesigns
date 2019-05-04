@@ -133,7 +133,7 @@ class MainViewController: MainViewBase, SearchButtonDelegate {
         let viewForSearchView = SearchView()
         self.view.window!.addSubview(viewForSearchView.view)
         viewForSearchView.viewModel = viewModel
-        viewForSearchView.bindData()
+        //viewForSearchView.bindData()
         addChild(viewForSearchView)
         viewForSearchView.didMove(toParent: self)
         viewForSearchView.view.frame.origin.x = self.view.frame.size.width

@@ -70,6 +70,13 @@
 		8DC3EFDB227C806100AB7555 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFD9227C806100AB7555 /* CarouselViewModel.swift */; };
 		8DC3EFDD227C92A000AB7555 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFDC227C92A000AB7555 /* MainViewModelTests.swift */; };
 		8DC3EFE1227CAAAE00AB7555 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFE0227CAAAE00AB7555 /* SearchView.swift */; };
+		8DC3EFE5227D3D5700AB7555 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFE4227D3D5700AB7555 /* SearchResult.swift */; };
+		8DC3EFED227D45CE00AB7555 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFEC227D45CE00AB7555 /* SearchTableViewCell.swift */; };
+		8DC3EFEE227D45CE00AB7555 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFEC227D45CE00AB7555 /* SearchTableViewCell.swift */; };
+		8DC3EFF0227D46A200AB7555 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFEF227D46A200AB7555 /* SearchViewModel.swift */; };
+		8DC3EFF1227D46A200AB7555 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFEF227D46A200AB7555 /* SearchViewModel.swift */; };
+		8DC3EFF6227D4B2000AB7555 /* SearchingResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EFF5227D4B2000AB7555 /* SearchingResults.json */; };
+		8DC3EFF7227D4B2000AB7555 /* SearchingResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EFF5227D4B2000AB7555 /* SearchingResults.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +139,10 @@
 		8DC3EFD9227C806100AB7555 /* CarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
 		8DC3EFDC227C92A000AB7555 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		8DC3EFE0227CAAAE00AB7555 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		8DC3EFE4227D3D5700AB7555 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		8DC3EFEC227D45CE00AB7555 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		8DC3EFEF227D46A200AB7555 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		8DC3EFF5227D4B2000AB7555 /* SearchingResults.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchingResults.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC3EF93227272D100AB7555 /* MainData.json */,
+				8DC3EFF5227D4B2000AB7555 /* SearchingResults.json */,
 			);
 			path = JsonFiles;
 			sourceTree = "<group>";
@@ -308,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC3EF9722728CC500AB7555 /* MainComponents.swift */,
+				8DC3EFE4227D3D5700AB7555 /* SearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC3EFBE227A6A3B00AB7555 /* MenuBarTableViewCell.swift */,
+				8DC3EFEC227D45CE00AB7555 /* SearchTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -403,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC3EFE0227CAAAE00AB7555 /* SearchView.swift */,
+				8DC3EFEF227D46A200AB7555 /* SearchViewModel.swift */,
 			);
 			path = SearchViewController;
 			sourceTree = "<group>";
@@ -515,6 +530,7 @@
 				8DC3EF442270E41200AB7555 /* LaunchScreen.storyboard in Resources */,
 				8DC3EF412270E41200AB7555 /* Assets.xcassets in Resources */,
 				8DC3EF3C2270E41000AB7555 /* Main.storyboard in Resources */,
+				8DC3EFF6227D4B2000AB7555 /* SearchingResults.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +540,7 @@
 			files = (
 				8DC3EF95227272D100AB7555 /* MainData.json in Resources */,
 				8DC3EF9B2273E49600AB7555 /* Main.storyboard in Resources */,
+				8DC3EFF7227D4B2000AB7555 /* SearchingResults.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,16 +576,19 @@
 				8DC3EFB72279050200AB7555 /* MenuViewController.swift in Sources */,
 				8DC3EFB02277D17000AB7555 /* WinnerCell.swift in Sources */,
 				8DC3EF6D2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
+				8DC3EFF0227D46A200AB7555 /* SearchViewModel.swift in Sources */,
 				8DC3EF86227252C700AB7555 /* WebseriveCaller.swift in Sources */,
 				8DC3EF712270E6AE00AB7555 /* Helpers.swift in Sources */,
 				8DC3EFA92277A8D100AB7555 /* WinnersHeader.swift in Sources */,
 				8DC3EFA32273F56A00AB7555 /* Widgets.swift in Sources */,
+				8DC3EFE5227D3D5700AB7555 /* SearchResult.swift in Sources */,
 				8DC3EF9822728CC500AB7555 /* MainComponents.swift in Sources */,
 				8DC3EFC6227B478D00AB7555 /* MainViewModel.swift in Sources */,
 				8DC3EFCD227C755200AB7555 /* Box.swift in Sources */,
 				8DC3EFBB2279057F00AB7555 /* MainViewController.swift in Sources */,
 				8DC3EFCA227B645300AB7555 /* Constants.swift in Sources */,
 				8DC3EFD1227C7F1400AB7555 /* GetStartedCollectionViewBase.swift in Sources */,
+				8DC3EFED227D45CE00AB7555 /* SearchTableViewCell.swift in Sources */,
 				8DC3EFE1227CAAAE00AB7555 /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,10 +610,12 @@
 				8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
 				8DC3EFAE2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */,
 				8DC3EF6E2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
+				8DC3EFEE227D45CE00AB7555 /* SearchTableViewCell.swift in Sources */,
 				8DC3EF912272610700AB7555 /* DataTranslator.swift in Sources */,
 				8DC3EF7C2270F2D800AB7555 /* CarouselCollectionViewCell.swift in Sources */,
 				8DC3EFDD227C92A000AB7555 /* MainViewModelTests.swift in Sources */,
 				8DC3EFCE227C755200AB7555 /* Box.swift in Sources */,
+				8DC3EFF1227D46A200AB7555 /* SearchViewModel.swift in Sources */,
 				8DC3EF722270E6AE00AB7555 /* Helpers.swift in Sources */,
 				8DC3EFC0227A6A3B00AB7555 /* MenuBarTableViewCell.swift in Sources */,
 				8DC3EFB82279050200AB7555 /* MenuViewController.swift in Sources */,

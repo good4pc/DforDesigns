@@ -1,0 +1,28 @@
+{
+    "searchResult" : [
+        {
+            "name" : "Prasanth P.C",
+            "id" : 384,
+            "profileImage" : "https://images.unsplash.com/photo-1533075377664-f5c0cbc5a91c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+            "userName" : "good4pc"
+        },
+        {
+            "name" : "Praveen C",
+            "id" : 320,
+            "profileImage" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKrMYDehj-K1tNbp4Ik7_W_d37Nb2N0jzVDl5hOjW5Ets1ITYE",
+            "userName" : "procks"
+        },
+        {
+            "name" : "Tim Sam",
+            "id" : 154,
+            "profileImage" : "https://timedotcom.files.wordpress.com/2017/12/ryan-pfluger-best-portraits-2017-1512.jpg?quality=85",
+            "userName" : "TSam"
+        },
+        {
+            "name" : "Casey",
+            "id" : 747,
+            "profileImage" : "https://timedotcom.files.wordpress.com/2018/12/philip-montgomery-best-portraits-2018.jpg?quality=85&w=1029",
+            "userName" : "Case"
+        }
+    ]
+}

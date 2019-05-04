@@ -31,11 +31,7 @@ extension MainViewModel {
         }
     }
 }
-//TODO: - Move
-struct SearchResult {
-    var name: String
-    var id: Int
-}
+
 
 class MainViewModel: NSObject {
     

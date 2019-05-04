@@ -96,7 +96,9 @@ extension UIImageView {
         let queue = DispatchQueue.global(qos: .background)
         queue.async {
             guard let url = URL(string: url) else {
-                self.image = UIImage(named: "noImage")
+                DispatchQueue.main.async {
+                    self.image = nil
+                }
                 completionHandler(nil)
                 return
             }
@@ -108,7 +110,9 @@ extension UIImageView {
                     })
                     completionHandler(data)
                 } else {
-                    self.image = UIImage(named: "noImage")
+                    DispatchQueue.main.async {
+                        self.image = nil
+                    }
                     completionHandler(nil)
                 }
                 }.resume()

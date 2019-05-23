@@ -185,6 +185,12 @@ extension SearchView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      //  print(viewModel)
+        cancelButtonPressed()
+        viewModel?.selectedSearch.value = searchViewModel.search?.searchResult[indexPath.row].id
+    }
+    
 }
 
 

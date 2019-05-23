@@ -20,6 +20,8 @@ private class Widgets {
         return label
     }()
     
+    //MARK: - label
+
     let WinnersAnnounced : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,14 +30,16 @@ private class Widgets {
         label.text = "WINNERS ANNOUNCED"
         return label
     }()
-    
+    //MARK: - imageView
+
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+    //MARK: - Button
+
     let browseChallenges: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +65,23 @@ private class Widgets {
        // self.view.layer.addSublayer(layer)
         layer.backgroundColor = UIColor.lightGray.cgColor
     }
+    //MARK: - tableView
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
+    class ProfileDetailsCell: UITableViewCell {
+        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+
     /**
  
      self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": imageView]))

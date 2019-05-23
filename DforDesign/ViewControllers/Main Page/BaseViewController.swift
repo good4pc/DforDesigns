@@ -36,6 +36,12 @@ class BaseViewController: UIViewController,MenuButtonDelegate,MenuViewControlDel
             addChild(menuViewController)
             menuViewController.didMove(toParent: self)
         }
+        
+        enum DataType {
+            case first(name: String, age: Int)
+            case second(pan: String)
+        }
+        
     }
     
     func closeView() {
@@ -57,6 +63,4 @@ class BaseViewController: UIViewController,MenuButtonDelegate,MenuViewControlDel
         isExpanded = !isExpanded
         
     }
-    
-    
 }

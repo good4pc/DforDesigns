@@ -59,6 +59,10 @@ extension UIView {
         }
     }
   
+    func addBorder() {
+        self.layer.borderColor = UIColor.brown.cgColor
+        self.layer.borderWidth = 1.0
+    }
 }
 //MARK: String
 

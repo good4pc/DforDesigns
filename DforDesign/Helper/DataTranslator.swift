@@ -43,7 +43,7 @@ class DataTranslator: NSObject {
     
     //MARK: - Searching data
     
-    static func decodeSearchData(with data: Data) throws -> Search  {
+    static func decodeSearchData<T: Decodable>(with data: Data) throws -> T  {
         //TODO:Refactor
         #if DEBUG
         let jsonPAth = Bundle.main.path(forResource: JsonFileName.searchResults.rawValue, ofType: "json")
@@ -55,7 +55,7 @@ class DataTranslator: NSObject {
         }
         let decoder = JSONDecoder()
         do {
-            return try  decoder.decode(Search.self, from: data)
+            return try  decoder.decode(T.self, from: data)
         } catch let error {
         //   print(error.localizedDescription)
             throw WebserviceError.decodingIssue

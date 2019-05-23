@@ -68,6 +68,11 @@ class MainViewController: MainViewBase, SearchButtonDelegate {
 //        viewModel.accessCode.bind { (value) in
 //           // print("value changed")
 //        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.selectedSearch.value = nil
     }
     //MARK: Loading data from service
     
@@ -128,7 +133,9 @@ class MainViewController: MainViewBase, SearchButtonDelegate {
         
         let viewForSearchView = SearchView()
         self.view.window!.addSubview(viewForSearchView.view)
+         bindData(with: viewModel)
         viewForSearchView.viewModel = viewModel
+       
         //viewForSearchView.bindData()
         addChild(viewForSearchView)
         viewForSearchView.didMove(toParent: self)
@@ -137,7 +144,25 @@ class MainViewController: MainViewBase, SearchButtonDelegate {
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             viewForSearchView.view.frame.origin.x = 0.0
         }, completion: nil)
- 
+        
+    }
+    
+    //MARK: - selected search
+    
+    func bindData(with viewModel: MainViewModel) {
+        viewModel.selectedSearch.bind {[weak self] (selectedUserId) in
+            guard let selectedUserId = selectedUserId else {
+               return
+            }
+            print("selected tableview with userID",selectedUserId)
+            self?.pushToProfilePage(with: selectedUserId)
+        }
+    }
+    
+    //MARK: - Navigation
+    func pushToProfilePage(with userId: Int) {
+        let profilePage = ProfileViewController()
+        self.navigationController?.pushViewController(profilePage, animated: true)
     }
     
     fileprivate func initializeCollectionView() {

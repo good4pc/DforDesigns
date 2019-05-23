@@ -77,6 +77,9 @@
 		8DC3EFF1227D46A200AB7555 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFEF227D46A200AB7555 /* SearchViewModel.swift */; };
 		8DC3EFF6227D4B2000AB7555 /* SearchingResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EFF5227D4B2000AB7555 /* SearchingResults.json */; };
 		8DC3EFF7227D4B2000AB7555 /* SearchingResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC3EFF5227D4B2000AB7555 /* SearchingResults.json */; };
+		8DC3EFFA227E091A00AB7555 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFF9227E091A00AB7555 /* ProfileViewController.swift */; };
+		8DC3EFFB227E091A00AB7555 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFF9227E091A00AB7555 /* ProfileViewController.swift */; };
+		8DC3EFFD227F44D000AB7555 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC3EFFC227F44D000AB7555 /* SearchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +146,8 @@
 		8DC3EFEC227D45CE00AB7555 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8DC3EFEF227D46A200AB7555 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8DC3EFF5227D4B2000AB7555 /* SearchingResults.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchingResults.json; sourceTree = "<group>"; };
+		8DC3EFF9227E091A00AB7555 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8DC3EFFC227F44D000AB7555 /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +219,7 @@
 				8DC3EF88227256FB00AB7555 /* Webservice */,
 				8DC3EF502270E41200AB7555 /* Info.plist */,
 				8DC3EFDC227C92A000AB7555 /* MainViewModelTests.swift */,
+				8DC3EFFC227F44D000AB7555 /* SearchTests.swift */,
 			);
 			path = DforDesignTests;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 		8DC3EFB92279051300AB7555 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8DC3EFF8227E07D100AB7555 /* ProfilePage */,
 				8DC3EF812272513200AB7555 /* Search */,
 				8DC3EFA72277A88E00AB7555 /* CollectionViewHeaders */,
 				8DC3EF6B2270E5B100AB7555 /* CollectionViewCell */,
@@ -420,6 +427,14 @@
 				8DC3EFEF227D46A200AB7555 /* SearchViewModel.swift */,
 			);
 			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		8DC3EFF8227E07D100AB7555 /* ProfilePage */ = {
+			isa = PBXGroup;
+			children = (
+				8DC3EFF9227E091A00AB7555 /* ProfileViewController.swift */,
+			);
+			path = ProfilePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,6 +579,7 @@
 				8DC3EFB32279014700AB7555 /* BaseViewController.swift in Sources */,
 				8DC3EFC3227A731B00AB7555 /* GetStartedCollectionViewCell.swift in Sources */,
 				8DC3EFD4227C7F6300AB7555 /* WinnerCellBase.swift in Sources */,
+				8DC3EFFA227E091A00AB7555 /* ProfileViewController.swift in Sources */,
 				8DC3EF372270E41000AB7555 /* AppDelegate.swift in Sources */,
 				8DC3EF9F2273F4EB00AB7555 /* ChallengeCell.swift in Sources */,
 				8DC3EFDA227C806100AB7555 /* CarouselViewModel.swift in Sources */,
@@ -597,6 +613,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC3EFFD227F44D000AB7555 /* SearchTests.swift in Sources */,
 				8DC3EF8A2272571E00AB7555 /* WebserviceTests.swift in Sources */,
 				8DC3EFB12277D17000AB7555 /* WinnerCell.swift in Sources */,
 				8DC3EF9922728CC500AB7555 /* MainComponents.swift in Sources */,
@@ -609,6 +626,7 @@
 				8DC3EFA42273F56A00AB7555 /* Widgets.swift in Sources */,
 				8DC3EF752270E71C00AB7555 /* SmartBoyFeedCell.swift in Sources */,
 				8DC3EFAE2277BF5B00AB7555 /* WinnersCollectionViewCell.swift in Sources */,
+				8DC3EFFB227E091A00AB7555 /* ProfileViewController.swift in Sources */,
 				8DC3EF6E2270E5BF00AB7555 /* DForDesignFeedCell.swift in Sources */,
 				8DC3EFEE227D45CE00AB7555 /* SearchTableViewCell.swift in Sources */,
 				8DC3EF912272610700AB7555 /* DataTranslator.swift in Sources */,

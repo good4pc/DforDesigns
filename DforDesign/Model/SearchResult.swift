@@ -8,6 +8,10 @@
 
 import UIKit
 //TODO: - Move
+//struct Search: Decodable {
+//    var searchResult: [SearchResult]
+//}
+
 struct Search: Decodable {
     var searchResult: [SearchResult]
 }

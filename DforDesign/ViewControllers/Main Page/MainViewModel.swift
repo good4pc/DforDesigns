@@ -38,6 +38,7 @@ class MainViewModel: NSObject {
     
     var accessCode: Box<String?> = Box(nil)
     var searchResults: Box<[SearchResult]?> = Box(nil)
+    var selectedSearch: Box<Int?> = Box(nil)
     
     override init() {
         super.init()
